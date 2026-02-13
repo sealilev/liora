@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אלבום אישי | מתנות ליאורה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-ocean: #0a1828;
+            --ocean-current: #2c5f7c;
+            --sea-foam: #9dc7d9;
+            --shore-sand: #d4a574;
+            --white-wave: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, var(--deep-ocean) 0%, var(--ocean-current) 100%);
+            color: var(--white-wave);
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(156, 199, 217, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: oceanMove 20s ease-in-out infinite;
+        }
+
+        @keyframes oceanMove {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gift-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .gift-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .gift-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--shore-sand);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .gift-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.95rem;
+            color: var(--sea-foam);
+            opacity: 0.8;
+        }
+
+        .gift-hero-image {
+            margin-bottom: 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gift-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .gift-section {
+            margin-bottom: 3rem;
+        }
+
+        .gift-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--shore-sand);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .gift-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--white-wave);
+            margin-bottom: 1rem;
+        }
+
+        .gift-materials {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gift-materials li {
+            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            padding-right: 2rem;
+            position: relative;
+            color: var(--white-wave);
+        }
+
+        .gift-materials li::before {
+            content: "▹";
+            position: absolute;
+            right: 0;
+            color: var(--shore-sand);
+            font-size: 1.5rem;
+        }
+
+        .instruction-step {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border-right: 4px solid var(--shore-sand);
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--sea-foam);
+            margin-bottom: 1rem;
+        }
+
+        .instruction-step p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .step-images img {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .step-images img:hover {
+            transform: scale(1.05);
+        }
+
+        .final-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .final-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-notes {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 10px;
+            border-right: 4px solid var(--shore-sand);
+        }
+
+        .gift-notes em {
+            color: var(--sea-foam);
+            font-size: 1rem;
+        }
+
+        .gift-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .nav-btn {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--shore-sand);
+            color: var(--shore-sand);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--shore-sand);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            color: var(--deep-ocean);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .footer p {
+            font-size: 0.95rem;
+            color: var(--sea-foam);
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-email {
+            color: var(--shore-sand);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-email:hover {
+            color: var(--sea-foam);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .gift-post {
+                padding: 2rem 1rem;
+            }
+            
+            .gift-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .gift-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .step-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .final-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .gift-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+    
+    <article class="gift-post">
+        <header class="gift-header">
+            <h1 class="gift-title">אלבום אישי</h1>
+            <div class="gift-meta">
+                <span class="gift-date">23-11-2011</span>
+                <span class="gift-category">מתנות</span>
+            </div>
+        </header>
+
+        <section class="gift-hero-image">
+            <img src="images/album-ishi/image1.jpg" alt="אלבום אישי">
+        </section>
+
+        <div class="gift-content">
+            <section class="gift-section">
+               <h2 class="section-title">קהל יעד:</h2>
+               <p>מתנה זו נועדה לתת אוסף של ברכות, ספר זכרונות.</p>
+               <p>את הרעיון הראשוני ניתן למנף החל מאוסף ברכות, דרך ספר זכרונות ועד לספר של "חיים שכאלה".</p>
+               <p>יצירת המתנה תלויה בשליחת ברכות ע"י א.נשים, כדי לקבל שיתוף פעולה רצוי לאפשר לשלוח ברכות בווצאפ / מייל ולהדפיס אותן.</p>
+               <p>הסדר בו אני בחרתי לדפי האלבום הוא לפי קבוצות. לדוגמא משפחה ואז חברים, ובתוך הקבוצות לפי קרבה.</p>
+            </section>
+
+            <section class="gift-section">
+                <h2 class="section-title">מצרכים:</h2>
+                <ul class="gift-materials">
+                    <li>אלבום – עדיפות לכזה הבנוי מדפי קרטון שחורים</li>
+                    <li>דבק "ביג" (ממש יודע להדביק הכל)</li>
+                    <li>דבק "הנזו" (מצוין להדבקת תמונות)</li>
+                    <li>קישוטים / חומרי יצירה מסוגים שונים</li>
+                    <li>ברכות ותמונות – רצוי לבקש לשלוח בנפרד ברכה ותמונה (כלומר לא לשלוח את התמונה כחלק מהקובץ שמכיל את הברכה), לציין שאפשר לשלוח עד 3 תמונות, כדי למנוע כמות גדולה מדי של תמונות, רוב הדפים יכילו תמונה או שתיים</li>
+                </ul>
+            </section>
+
+            <section class="gift-section">
+                <h2 class="section-title">אופן ההכנה:</h2>
+                
+                <div class="instruction-step">
+    <h3 class="step-title">חומרים לעיצוב דפי האלבום:</h3>
+    <p>את חומרי הגלם להכנת האלבום ניתן לרכוש בחנויות כמו מקס-סטוק, או חנויות יצירה שונים.</p>
+    <p>אפשר ורצוי להשתמש בדברים שיש בבית כמו נייר אפיה, ניילונים בצבעים שונים, כיד הדימיון הטובה עליך.</p>
+    <p>המלצה: לקבל קודם את הברכות, ורק אז להשקיע בחומרי עיצוב, כך שיתאימו לברכות.</p>
+    <p>כנ"ל לגבי התמונות. ככל שתדפיסו כמות תמונה גדולה יותר, כך יורד המחיר. אל תתעצלו וחפשו מקומות שמדפיסים בזול יחסית. איכות התמונה חשובה אבל היא לא העיקר. אפשר כמובן גם להדפיס במדפסת צבע אם יש.</p>
+    <div class="step-images">
+        <img src="images/album-ishi/image15.png" alt="חומרים לעיצוב">
+    </div>
+</div>
+                <p>להלן עיצובים שונים של דפי האלבום. היצרתיות היא אינסופית, כל דבר יכול לשמש חומר גלם.</p>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 1: ברכה עם חליל ושרשרת</h3>
+                    <p>עיצוב זה משלב דף בסיס עליו מודבקת הברכה בשני קטעים. החתימה היא עם תמונה של חליל כיוון שהברכה עצמה עוסקת בנושא. המברכת היא אישה ולכן יש גם שרשרת עם דמות נקבה.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image2.jpg" alt="עיצוב 1">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 2: לאנשים שלא רוצים לכתוב</h3>
+                    <p>עיצוב זה נועד לאנשים הרוצים להיות חלק מהאלבום אולם לא רוצים לכתוב. העיצוב במקרה שלפנינו מציג אדם המצלם ואוהב את הים. כמובן שיש להתאים את העיצוב לאופי האדם הנותן.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image3.jpg" alt="עיצוב 2">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 3: מספר אנשים מברכים יחד</h3>
+                    <p>עיצוב מכמה אנשים שמברכים יחד. ליד כל דמות שם הנותן. מתאים לברכה הניתנת ממשפחה עם ילדים, כך אפשר לתת לכל אחד ייצוג. הברכה עצמה מודפסת על דף שנקרע ביד.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image4.jpg" alt="עיצוב 3">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 4: צבעי כסף ונצנצים</h3>
+                    <p>עיצוב בצבעי כסף, נצנצים, תליון (לא מכסף אמיתי :)). השם נכתב באמצעות שכבת דבק עבה יחסית המאפשרת ליצור תבליט.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image5.jpg" alt="עיצוב 4">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 5: ברכה עם תמונה וחיפושיות</h3>
+                    <p>עיצוב המאחד ברכה עם תמונה. התמונה נגזרה לשם העיצוב, דף הברכה נקרע ביד וסביבו הודבקו חיפושיות בירוק. השם הובלט מאותיות עץ.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image6.jpg" alt="עיצוב 5">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 6: מספר תמונות ופרפרים</h3>
+                    <p>עיצוב ברכה עם מספר תמונות שנשלחו מנותנת הברכה. חיתוך של התמונות, פרפרים ממתכת בורוד נותנים עוד קצת צבע ועיצוב.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image7.jpg" alt="עיצוב 6">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 7: איש מחשבים</h3>
+                    <p>נותן הברכה הוא איש מחשבים ועל בסיס זה עוצב הדף.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image8.jpg" alt="עיצוב 7">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 8: משחק עם תמונות</h3>
+                    <p>עיצוב המשחק עם תמונות ועם ברכות ממספר אנשים.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image9.jpg" alt="עיצוב 8">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 9: סולידי עם זיגזג</h3>
+                    <p>עיצוב "סולידי", נייר הברכה נגזר עם מספרי זיגזג.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image10.jpg" alt="עיצוב 9">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב 10: משחק עם הנייר</h3>
+                    <p>עיצוב המשחק עם הנייר, ומשלב אלמנטים להכנסת צבע.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image11.jpg" alt="עיצוב 10">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                <h3 class="step-title">עיצוב 11: כלי נגינה</h3>
+                   <p>עיצוב המשחק עם עולם המוזיקה.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image12.jpg" alt="עיצוב נועז">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">עיצוב לדף סיום:</h3>
+                    <p>עיצוב לדף הסוגר את האלבום.</p>
+                    <div class="step-images">
+                        <img src="images/album-ishi/image13.jpg" alt="דף סיום">
+                    </div>
+                </div>
+            </section>
+            <div class="instruction-step">
+                <h3 class="step-title">עיצוב ללא ברכה:</h3>
+                <p>אם נשארים דפים באלבום עצבו אותם בלי ברכה, הניסיון מלמד שגם הסרבנים העקשנים ביותר "רוצים גם" ברגע שהם רואים את האלבום.</p>
+                <div class="step-images">
+                    <img src="images/album-ishi/image14.jpg" alt="דף עיצוב ללא ברכה">
+                </div>
+            </div>
+            <section class="gift-notes">
+               <p><em>🥵 החלק הקשה הוא לקבל ברכות מא.נשים 🥵</em></p>
+               <p><em>😮 החלק הכיף הוא ההפתעה הגדולה כשהם מגלים את האלבום 🫢</em></p>
+            </section>
+        </div>
+
+        <nav class="gift-navigation">
+            <a href="gifts.html" class="nav-btn">← חזרה לכל המתנות</a>
+            <a href="../index.html" class="nav-btn">חזרה לדף הראשי</a>
+        </nav>
+    </article>
+
+    <footer class="footer">
+        <p>© 2025 ליאורה לוי | כל הזכויות שמורות</p>
+        <p><a href="mailto:aunisea@gmail.com" class="footer-email">aunisea@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>

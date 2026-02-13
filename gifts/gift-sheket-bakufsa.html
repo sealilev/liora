@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שקט בקופסא | מתנות ליאורה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-ocean: #0a1828;
+            --ocean-current: #2c5f7c;
+            --sea-foam: #9dc7d9;
+            --shore-sand: #d4a574;
+            --white-wave: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, var(--deep-ocean) 0%, var(--ocean-current) 100%);
+            color: var(--white-wave);
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+
+        /* Ocean Background */
+        .ocean-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(156, 199, 217, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: oceanMove 20s ease-in-out infinite;
+        }
+
+        @keyframes oceanMove {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gift Post Container */
+        .gift-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        /* Header */
+        .gift-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .gift-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--shore-sand);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .gift-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.95rem;
+            color: var(--sea-foam);
+            opacity: 0.8;
+        }
+
+        /* Hero Image */
+        .gift-hero-image {
+            margin-bottom: 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Content */
+        .gift-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .gift-section {
+            margin-bottom: 3rem;
+        }
+
+        .gift-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--shore-sand);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .gift-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--white-wave);
+            margin-bottom: 1rem;
+        }
+
+        /* Materials List */
+        .gift-materials {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gift-materials li {
+            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            padding-right: 2rem;
+            position: relative;
+            color: var(--white-wave);
+        }
+
+        .gift-materials li::before {
+            content: "▹";
+            position: absolute;
+            right: 0;
+            color: var(--shore-sand);
+            font-size: 1.5rem;
+        }
+
+        /* Instruction Steps */
+        .instruction-step {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border-right: 4px solid var(--shore-sand);
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--sea-foam);
+            margin-bottom: 1rem;
+        }
+
+        .instruction-step p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Step Images */
+        .step-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .step-images img {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .step-images img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Final Images */
+        .final-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .final-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Notes */
+        .gift-notes {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 10px;
+            border-right: 4px solid var(--shore-sand);
+        }
+
+        .gift-notes em {
+            color: var(--sea-foam);
+            font-size: 1rem;
+        }
+
+        /* Navigation */
+        .gift-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .nav-btn {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--shore-sand);
+            color: var(--shore-sand);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--shore-sand);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            color: var(--deep-ocean);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .footer p {
+            font-size: 0.95rem;
+            color: var(--sea-foam);
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-email {
+            color: var(--shore-sand);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-email:hover {
+            color: var(--sea-foam);
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .gift-post {
+                padding: 2rem 1rem;
+            }
+            
+            .gift-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .gift-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .step-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .final-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .gift-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+    
+    <!-- Gift Post Container -->
+    <article class="gift-post">
+        <!-- Header -->
+        <header class="gift-header">
+            <h1 class="gift-title">שקט בקופסא</h1>
+            <div class="gift-meta">
+                <span class="gift-date">28-11-2011</span>
+                <span class="gift-category">מתנות</span>
+            </div>
+        </header>
+
+        <!-- Main Image -->
+        <section class="gift-hero-image">
+            <img src="images/quiet.jpg" alt="שקט בקופסא">
+        </section>
+
+        <!-- Content -->
+        <div class="gift-content">
+            <!-- Target Audience -->
+            <section class="gift-section">
+                <h2 class="section-title">קהל יעד:</h2>
+                <p>מתנה זו נועדה לתת שקט / פסק זמן / שלווה.</p>
+                <p>שקט בקופסא כשמה כן היא, והיא נועדה בעיקר לאנשים השרויים במתח רב, אנשים שסדר היום שלהם עמוס לעייפה, אנשים הנוטים לעצבנות.</p>
+                <p>המתנה באה לומר "הנה פה יש לך פינה קטנה של שקט".</p>
+            </section>
+
+            <!-- Materials -->
+            <section class="gift-section">
+                <h2 class="section-title">מצרכים:</h2>
+                <ul class="gift-materials">
+                    <li>קופסא</li>
+                    <li>השיר "שקט"</li>
+                </ul>
+            </section>
+
+            <!-- Instructions -->
+            <section class="gift-section">
+                <h2 class="section-title">אופן ההכנה:</h2>
+                
+                <!-- Step 1 -->
+                <div class="instruction-step">
+                    <h3 class="step-title">הכנת הקופסא:</h3>
+                    <p>אפשר לעצב את הקופסא או לרכוש קופסא מעוצבת. חשוב שהקופסא תשדר "שקט" ולא משהו מקושקש מידיי. הקופסא צריכה להשאר ריקה. לא לשים בתוכה את השיר, בתוך הקופסא יש שקט (:</p>
+                    <div class="step-images">
+                        <img src="images/sheket-bakufsa/image1.jpg" alt="קופסא">
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="instruction-step">
+                    <h3 class="step-title">צירוף השיר:</h3>
+                    <p>את השיר ניתן לצרף בכמה אופנים:</p>
+                    <p>• להדפיס / לכתוב בכתב יד, לשים במעטפה, את המעטפה לשים בתוך האריזה או מחוצה לה.</p>
+                    <p>• לכתוב את מילות השיר בכתב יד על הקופסא – מומלץ.</p>
+                    <p>• להדפיס את השיר בצורה ייחודית ולעטוף את הקופסא עם המילים.</p>
+                    <p>• ליצור קיו-קוד שמוביל לשיר באינרטנרט.</p>
+                    <p>• ניתן לתת בנוסף נגן מכל סוג שיש עליו את השיר (נותן ערך כספי למתנה אם זה חשוב).</p>
+                </div>
+            </section>
+
+            <!-- Notes -->
+            <section class="gift-notes">
+                <p><em>💙 לעטוף ולתת באהבה 💙</em></p>
+                <p><em>💙 זכרו: בתוך הקופסא יש שקט 💙</em></p>
+            </section>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="gift-navigation">
+            <a href="gifts.html" class="nav-btn">← חזרה לכל המתנות</a>
+            <a href="../index.html" class="nav-btn">חזרה לדף הראשי</a>
+        </nav>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 ליאורה לוי | כל הזכויות שמורות</p>
+        <p><a href="mailto:aunisea@gmail.com" class="footer-email">aunisea@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>

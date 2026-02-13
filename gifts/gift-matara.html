@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מטרה | מתנות ליאורה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-ocean: #0a1828;
+            --ocean-current: #2c5f7c;
+            --sea-foam: #9dc7d9;
+            --shore-sand: #d4a574;
+            --white-wave: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, var(--deep-ocean) 0%, var(--ocean-current) 100%);
+            color: var(--white-wave);
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+
+        .ocean-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(156, 199, 217, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: oceanMove 20s ease-in-out infinite;
+        }
+
+        @keyframes oceanMove {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gift-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .gift-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .gift-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--shore-sand);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .gift-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.95rem;
+            color: var(--sea-foam);
+            opacity: 0.8;
+        }
+
+        .gift-hero-image {
+            margin-bottom: 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gift-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .gift-section {
+            margin-bottom: 3rem;
+        }
+
+        .gift-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--shore-sand);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .gift-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--white-wave);
+            margin-bottom: 1rem;
+        }
+
+        .gift-materials {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gift-materials li {
+            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            padding-right: 2rem;
+            position: relative;
+            color: var(--white-wave);
+        }
+
+        .gift-materials li::before {
+            content: "▹";
+            position: absolute;
+            right: 0;
+            color: var(--shore-sand);
+            font-size: 1.5rem;
+        }
+
+        .instruction-step {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border-right: 4px solid var(--shore-sand);
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--sea-foam);
+            margin-bottom: 1rem;
+        }
+
+        .instruction-step p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .step-images img {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .step-images img:hover {
+            transform: scale(1.05);
+        }
+
+        .final-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .final-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-notes {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 10px;
+            border-right: 4px solid var(--shore-sand);
+        }
+
+        .gift-notes em {
+            color: var(--sea-foam);
+            font-size: 1rem;
+        }
+
+        .gift-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .nav-btn {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--shore-sand);
+            color: var(--shore-sand);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--shore-sand);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            color: var(--deep-ocean);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .footer p {
+            font-size: 0.95rem;
+            color: var(--sea-foam);
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-email {
+            color: var(--shore-sand);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-email:hover {
+            color: var(--sea-foam);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .gift-post {
+                padding: 2rem 1rem;
+            }
+            
+            .gift-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .gift-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .step-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .final-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .gift-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+    
+    <article class="gift-post">
+        <header class="gift-header">
+            <h1 class="gift-title">מטרה</h1>
+            <div class="gift-meta">
+                <span class="gift-date">22-11-2011</span>
+                <span class="gift-category">מתנות</span>
+            </div>
+        </header>
+
+        <section class="gift-hero-image">
+            <img src="images/goal.jpg" alt="מטרה">
+        </section>
+
+        <div class="gift-content">
+            <section class="gift-section">
+                <h2 class="section-title">קהל יעד:</h2>
+                <p>מתנה זו נועדה לאלו היוצאים לדרך חדשה שיש לה יעד מוגדר. לדוגמא: לימודים לתואר, קורס טיס.</p>
+                <p>הרעיון מתמקד בנתינת "פוש", לעודד, לומר למקבל המתנה "אתה תגשים", עם דגש על התחנות שעליו לעבור בדרך אל המטרה.</p>
+            </section>
+
+            <section class="gift-section">
+                <h2 class="section-title">מצרכים:</h2>
+                <ul class="gift-materials">
+                    <li>פלטה עגולה</li>
+                    <li>לבד בצבעים שונים (מינימום שניים)</li>
+                    <li>טושים זוהרים (רצוי כסוף או זהוב)</li>
+                    <li>דבק</li>
+                    <li>חיצי מטרה</li>
+                </ul>
+            </section>
+
+            <section class="gift-section">
+                <h2 class="section-title">אופן ההכנה:</h2>
+                
+                <div class="instruction-step">
+                    <h3 class="step-title">פלטת הבסיס:</h3>
+                    <p>פלטת הבסיס צריכה להיות בנויה כך שתהיה קשיחה מספיק על מנת שניתן יהא לנעוץ בה חיצי מטרה. ניתן לרכוש מטרה של ממש ועליה לבנות את המטרה הייעודית, או ליצור את הבסיס מקרטון עבה / מספר קרטונים שחוברו זה לזה / שעם.</p>
+                    <div class="step-images">
+                        <img src="images/matara/image2.png" alt="פלטת בסיס">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">שלבי המטרה:</h3>
+                    <p>גוזרים ומדביקים על גבי המטרה מספר עיגולים כמספר השנים / יעדים למטרה + 1 שיהווה את המטרה עצמה. כל עיגול יהא קטן יותר מקודמו.</p>
+                    <p>לדוגמא: במידה ומדובר על מתנה הניתנת לתואר ראשון – משך הלימודים 3 שנים, יש להכין ארבעה עיגולים, בארבעה גדלים. החיצוני ביותר מהווה את השנה הראשונה, השני והשלישי את השנים הבאות – בהתאמה, והרביעי מהווה את תעודת התואר עצמו.</p>
+                    <p>בדוגמא שלפנינו העיגול הרביעי מציין את כובע הקונדיטור הנכסף.</p>
+                    <p>חשוב להשתמש במינימום שני צבעים על מנת לאפשר הפרדה בין שלבי המטרה השונים.</p>
+                    <div class="step-images">
+                        <img src="images/matara/image3.jpg" alt="שלבי המטרה">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">כיתוב על גבי שלבי המטרה:</h3>
+                    <p>בעבור כל שלב יש לכתוב את המאפיינים שלו, ממה הוא מורכב וכד'.</p>
+                    <p>בדוגמא שלפנינו מדובר על מטרה עבור לימודי תעודה לקונדיטור, כך שהשלבים מהווים את תוכן הלימודים, החל מבסיס ועד לכובע הנכסף.</p>
+                    <div class="step-images">
+                        <img src="images/matara/image4.jpg" alt="כיתוב שלבים">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">הוספת משולש תליה:</h3>
+                    <p>ניתן להוסיף בצידה האחורי של המטרה משולש תליה.</p>
+                    <div class="step-images">
+                        <img src="images/matara/image5.png" alt="משולש תליה">
+                    </div>
+                </div>
+
+                <div class="instruction-step">
+                    <h3 class="step-title">חיצים:</h3>
+                    <p>הוספת חיצי מטרה להשלמת המתנה.</p>
+                    <div class="step-images">
+                        <img src="images/matara/image6.png" alt="חיצים">
+                    </div>
+                </div>
+            </section>
+
+            <section class="gift-notes">
+                <p><em>💙 לעטוף ולתת באהבה 💙</em></p>
+                <div class="final-images">
+                    <img src="images/matara/image7.png" alt="תוצר סופי">
+                </div>
+            </section>
+        </div>
+
+        <nav class="gift-navigation">
+            <a href="gifts.html" class="nav-btn">← חזרה לכל המתנות</a>
+            <a href="../index.html" class="nav-btn">חזרה לדף הראשי</a>
+        </nav>
+    </article>
+
+    <footer class="footer">
+        <p>© 2025 ליאורה לוי | כל הזכויות שמורות</p>
+        <p><a href="mailto:aunisea@gmail.com" class="footer-email">aunisea@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>
