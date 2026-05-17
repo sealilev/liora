@@ -1,0 +1,261 @@
+/* Project Page Specific Styles */
+
+/* Main Container */
+.project-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem 2rem 2rem;
+}
+
+/* Header */
+.project-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.project-name {
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--sea-foam);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.project-description {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.8;
+    color: var(--white-foam);
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Content Section */
+.project-content {
+    margin-bottom: 4rem;
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: rgba(10, 24, 40, 0.6);
+    border: 2px solid rgba(156, 199, 217, 0.3);
+    border-radius: 8px;
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* Site Preview (for Osnat site) */
+.site-preview {
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.preview-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid rgba(156, 199, 217, 0.3);
+    transition: all 0.3s ease;
+}
+
+.preview-link:hover {
+    border-color: var(--shore-sand);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+.site-screenshot {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.preview-link:hover .site-screenshot {
+    transform: scale(1.05);
+}
+
+.visit-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(10, 24, 40, 0.9), transparent);
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.preview-link:hover .visit-overlay {
+    transform: translateY(0);
+}
+
+.visit-text {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--shore-sand);
+    display: block;
+    text-align: center;
+}
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(10, 24, 40, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgba(156, 199, 217, 0.2);
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease-out 0.6s both;
+}
+
+.contact-title {
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 300;
+    color: var(--sea-foam);
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    padding: 1.2rem 2.5rem;
+    background: transparent;
+    border: 2px solid var(--shore-sand);
+    color: var(--shore-sand);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--shore-sand);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.contact-btn:hover::before {
+    left: 0;
+}
+
+.contact-btn:hover {
+    color: var(--deep-ocean);
+}
+
+.whatsapp-btn {
+    border-color: #40e0d0;
+    color: #40e0d0;
+}
+
+.whatsapp-btn::before {
+    background: #40e0d0;
+}
+
+/* Back Section */
+.back-section {
+    text-align: center;
+    margin: 2rem 0 4rem 0;
+}
+
+/* Navigation Button */
+.nav-btn {
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 2px solid var(--shore-sand);
+    color: var(--shore-sand);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--shore-sand);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.nav-btn:hover::before {
+    left: 0;
+}
+
+.nav-btn:hover {
+    color: var(--deep-ocean);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .project-page {
+        padding: 2rem 1rem;
+    }
+    
+    .project-header {
+        margin-bottom: 3rem;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .contact-btn {
+        text-align: center;
+    }
+}
