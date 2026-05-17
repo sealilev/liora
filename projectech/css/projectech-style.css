@@ -1,0 +1,119 @@
+/* Projectech Page Specific Styles */
+
+/* Projects Grid */
+.projects-grid {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+/* Project Card */
+.project-card {
+    background: rgba(10, 24, 40, 0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(156, 199, 217, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--shore-sand);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Project Image */
+.project-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: rgba(10, 24, 40, 0.6);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+/* Project Title */
+.project-title {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--shore-sand);
+    padding: 1.5rem;
+    text-align: center;
+    margin: 0;
+}
+
+/* Back Section */
+.back-section {
+    text-align: center;
+    margin: 2rem 0 4rem 0;
+}
+
+/* Navigation Button - Complete styling */
+.nav-btn {
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 2px solid var(--shore-sand);
+    color: var(--shore-sand);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--shore-sand);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.nav-btn:hover::before {
+    left: 0;
+}
+
+.nav-btn:hover {
+    color: var(--deep-ocean);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .project-image {
+        height: 250px;
+    }
+    
+    .project-title {
+        font-size: 1.2rem;
+        padding: 1.2rem;
+    }
+}
