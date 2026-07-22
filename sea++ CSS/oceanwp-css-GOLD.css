@@ -1,0 +1,376 @@
+/* ==========================================
+   עיצוב בלוג ליאורה - סגנון אוקיינוס
+   להעתקה ל: OceanWP → Custom CSS/JS
+   ========================================== */
+
+/* ===== 1. גופן Heebo ===== */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
+
+/* ===== 2. משתנים - צבעים ===== */
+:root {
+    --deep-ocean: #0a1828;
+    --ocean-current: #2c5f7c;
+    --sea-foam: #9dc7d9;
+    --shore-sand: #d4a574;
+    --white-wave: #f8f9fa;
+}
+
+/* ===== 3. רקע האתר - גרדיאנט כחול עם גלים ===== */
+body.single-post {
+    background: linear-gradient(135deg, var(--deep-ocean) 0%, var(--ocean-current) 100%) !important;
+    font-family: 'Heebo', sans-serif !important;
+    color: var(--white-wave) !important;
+    position: relative;
+}
+
+/* אפקט גלים ברקע */
+body.single-post::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(156, 199, 217, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+    z-index: -1;
+    pointer-events: none;
+    animation: oceanMove 20s ease-in-out infinite;
+}
+
+@keyframes oceanMove {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* ===== 4. קונטיינר הפוסט ===== */
+.single-post #content-wrap,
+.single-post .content-area {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+    border-radius: 15px;
+    padding: 3rem !important;
+    margin-top: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== 5. כותרת הפוסט ===== */
+/* הכותרת תופיע מתחת לתמונה */
+.single-post .entry-header {
+    order: 2; /* תמונה קודם, כותרת אחרי */
+}
+
+.single-post .thumbnail {
+    order: 1; /* תמונה ראשונה */
+}
+
+.single-post article {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-post .entry-header .entry-title {
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+    color: #f4d03f !important;
+    text-align: center;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: 0.05em;
+    text-shadow: 
+        3px 3px 8px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(244, 208, 63, 0.4);
+}
+
+/* מטא דאטה (תאריך, קטגוריה) */
+.single-post .entry-header .entry-meta {
+    text-align: center;
+    color: var(--sea-foam) !important;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+    font-size: 1rem;
+}
+
+.single-post .entry-header .entry-meta a {
+    color: var(--shore-sand) !important;
+    font-weight: 600;
+}
+
+.single-post .entry-header .entry-meta a:hover {
+    color: var(--sea-foam) !important;
+}
+
+/* ===== 6. תמונה ראשית (Featured Image) ===== */
+.single-post .thumbnail {
+    margin-bottom: 3rem !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.single-post .thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+}
+
+/* ===== 7. תוכן הפוסט ===== */
+.single-post .entry-content {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+    color: var(--white-wave) !important;
+}
+
+.single-post .entry-content p {
+    margin-bottom: 1.5rem;
+    color: var(--white-wave) !important;
+}
+
+/* כותרות משנה */
+.single-post .entry-content h2 {
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+    color: var(--shore-sand) !important;
+    margin: 2.5rem 0 1.5rem 0 !important;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+}
+
+.single-post .entry-content h3 {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: var(--sea-foam) !important;
+    margin: 2rem 0 1rem 0 !important;
+}
+
+.single-post .entry-content h4,
+.single-post .entry-content h5,
+.single-post .entry-content h6 {
+    color: var(--sea-foam) !important;
+    margin: 1.5rem 0 1rem 0 !important;
+}
+
+/* ===== 8. תמונות בתוך הפוסט ===== */
+.single-post .entry-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+    margin: 2rem 0 !important;
+    transition: transform 0.3s ease;
+}
+
+.single-post .entry-content img:hover {
+    transform: scale(1.02);
+}
+
+/* ===== 9. לינקים ===== */
+.single-post .entry-content a {
+    color: var(--shore-sand) !important;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.single-post .entry-content a:hover {
+    color: var(--sea-foam) !important;
+}
+
+/* ===== 10. רשימות ===== */
+.single-post .entry-content ul,
+.single-post .entry-content ol {
+    margin: 1.5rem 0;
+    padding-right: 2rem;
+    color: var(--white-wave) !important;
+}
+
+.single-post .entry-content li {
+    margin-bottom: 0.8rem;
+    color: var(--white-wave) !important;
+}
+
+/* ===== 11. ציטוטים ===== */
+.single-post .entry-content blockquote {
+    background: rgba(212, 165, 116, 0.1);
+    border-right: 4px solid var(--shore-sand);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 10px;
+    font-style: italic;
+    color: var(--sea-foam) !important;
+}
+
+/* ===== 12. קוד ===== */
+.single-post .entry-content code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    color: var(--shore-sand);
+    font-family: 'Courier New', monospace;
+}
+
+.single-post .entry-content pre {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+/* ===== 13. טבלאות ===== */
+.single-post .entry-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+.single-post .entry-content table th {
+    background: rgba(212, 165, 116, 0.2);
+    color: var(--shore-sand) !important;
+    padding: 1rem;
+    border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+.single-post .entry-content table td {
+    padding: 0.8rem;
+    border: 1px solid rgba(212, 165, 116, 0.3);
+    color: var(--white-wave) !important;
+}
+
+/* ===== 14. גלריות תמונות ===== */
+.single-post .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.single-post .gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* ===== 15. וידאו ===== */
+.single-post .entry-content iframe,
+.single-post .entry-content video {
+    width: 100%;
+    border-radius: 10px;
+    margin: 2rem 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== 16. תגיות וקטגוריות בתחתית ===== */
+.single-post .entry-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(212, 165, 116, 0.3);
+    color: var(--sea-foam) !important;
+}
+
+.single-post .entry-footer a {
+    color: var(--shore-sand) !important;
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+/* ===== 17. ניווט פוסטים (הבא/הקודם) ===== */
+.single-post .post-navigation {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.single-post .post-navigation a {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid var(--shore-sand);
+    color: var(--shore-sand) !important;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.single-post .post-navigation a:hover {
+    background: var(--shore-sand);
+    color: var(--deep-ocean) !important;
+}
+
+/* ===== 18. תגובות ===== */
+.single-post #comments {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.single-post #comments .comment {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    border-right: 4px solid var(--sea-foam);
+}
+
+.single-post #comments .comment-author {
+    color: var(--shore-sand) !important;
+    font-weight: 600;
+}
+
+.single-post #comments .comment-content {
+    color: var(--white-wave) !important;
+}
+
+/* ===== 19. רספונסיביות - מובייל ===== */
+@media (max-width: 768px) {
+    .single-post #content-wrap,
+    .single-post .content-area {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .single-post .entry-header .entry-title {
+        font-size: 2rem !important;
+    }
+    
+    .single-post .entry-content {
+        font-size: 1rem !important;
+    }
+    
+    .single-post .entry-content h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .single-post .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== 20. אנימציות ===== */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.single-post .entry-content {
+    animation: fadeIn 1s ease;
+}
+
+/* ===== הערות חשובות ===== */
+/*
+1. הקוד הזה משנה רק את עיצוב הפוסטים (single post)
+2. הסיידבר נשאר כמו שהוא
+3. אם רוצה לשנות משהו נוסף - ספרי לי!
+4. כל הצבעים מוגדרים ב-:root למעלה - קל לשנות
+*/

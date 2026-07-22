@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Personal / raw source material — not for the public repo
+Present Simple/
+בלוג מתנות/
+
+# Demo videos — hosted on YouTube instead of in the repo
+*.mp4
+*.mov

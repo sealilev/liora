@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בקרוב | Sea++</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .coming-soon-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .coming-soon-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            color: var(--sea-foam);
+            margin-bottom: 2rem;
+        }
+        
+        .coming-soon-text {
+            font-size: 1.3rem;
+            color: var(--white-foam);
+            margin-bottom: 3rem;
+            max-width: 500px;
+        }
+        
+        .back-btn {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--shore-sand);
+            color: var(--shore-sand);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: var(--shore-sand);
+            color: var(--deep-ocean);
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg"></div>
+    
+    <div class="coming-soon-container">
+        <h1 class="coming-soon-title">בקרוב...</h1>
+        <p class="coming-soon-text">הדף הזה בבנייה. חזרו בקרוב לגלות תוכן חדש ומרגש!</p>
+        <a href="index.html" class="back-btn">← חזרה לדף הראשי</a>
+    </div>
+    
+    <footer class="footer">
+        <p>© 2025 ליאורה לוי | כל הזכויות שמורות</p>
+        <p><a href="mailto:aunisea@gmail.com" class="footer-email">aunisea@gmail.com</a></p>
+    </footer>
+</body>
+</html>
