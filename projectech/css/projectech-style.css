@@ -10,14 +10,32 @@
     font-size: 1.35rem;
 }
 
+/* Hook Text */
+.hook-text {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hook-line-1 {
+    font-size: 1.6rem;
+    color: var(--shore-sand);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.hook-line-2 {
+    font-size: 1.2rem;
+    color: var(--white-foam);
+}
+
 /* Projects Grid */
 .projects-grid {
     max-width: 1200px;
     margin: 0 auto 4rem;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
 }
 
 /* Project Card */
@@ -41,7 +59,7 @@
 /* Project Image */
 .project-image {
     width: 100%;
-    height: 300px;
+    height: 180px;
     overflow: hidden;
     background: rgba(10, 24, 40, 0.6);
 }
@@ -60,10 +78,10 @@
 /* Project Title */
 .project-title {
     font-family: 'Heebo', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 400;
     color: var(--shore-sand);
-    padding: 1.5rem;
+    padding: 1rem;
     text-align: center;
     margin: 0;
 }
@@ -136,16 +154,24 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    /* Horizontal scroll strip instead of shrinking 4 cards to fit */
     .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 1rem;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding: 0 1rem 1rem;
     }
-    
+
+    .project-card {
+        flex: 0 0 75%;
+        scroll-snap-align: start;
+    }
+
     .project-image {
-        height: 250px;
+        height: 200px;
     }
-    
+
     .project-title {
         font-size: 1.2rem;
         padding: 1.2rem;
