@@ -303,4 +303,11 @@ body {
         padding: 1.2rem 2rem;
         font-size: 1.1rem;
     }
+
+    .lang-switch {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
 }
