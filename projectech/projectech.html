@@ -22,18 +22,6 @@
                 <p class="hook-line-1">פה תגלו איך אני מממנת את החופש להיות</p>
                 <p class="hook-line-2">קבלו הצצה לפרויקטים שאני מפתחת למחייתי</p>
             </div>
-
-            <div style="max-width: 900px; margin: 2rem auto 0; font-size: 1.3125rem; line-height: 1.8; color: var(--white-foam); text-align: right;">
-                <p>בשנת 1996 התחלתי את דרכי בעולם ההייטק כמפתחת תכנה. ומאז התקדמתי דרך תפקידי ניהול - החל בניהול פרויקטים, דרך בדיקות ובקרת איכות (QA), תחום שבו הפכתי למומחית.</p>
-
-                <p>לאחר 12 שנים כמנהלת QA התקדמתי לניהול מוצר. יחד עם ההבנה והידע בתכנות וההתמחות בבדיקות, ניהול המוצר נתן לי את הכלים, הניסיון והראיה המערכתית בפיתוח מוצרים.</p>
-
-                <p>לאחר כ-4 שנים כמנהלת מוצר הפכתי לעצמאית. כעצמאית יעצתי לחברות בתחום ה-QA, ולימדתי בדיקות ואוטומציה במשך כ-15 שנה במכללות המובילות בשוק.</p>
-
-                <p>כיום, אני בונה פתרונות ממוקדים בתחומים שונים על פי צרכי הלקוח. אני לא בונה תוכנות "גרנדיוזיות" - אני מתמחה בפתרונות אישיים ומעשיים לעולמות תוכן ספציפיים.</p>
-
-                <p style="color: var(--shore-sand); font-weight: 500;">בדף זה תוכלו לראות חלק מהפתרונות שפיתחתי (:</p>
-            </div>
         </section>
 
         <!-- Projects Grid -->
@@ -71,6 +59,11 @@
             </a>
         </section>
 
+        <!-- Bio Toggle -->
+        <section class="bio-toggle-section">
+            <button type="button" class="nav-btn bio-toggle-btn" id="bioToggleBtn">ההייטקיסטית שאני</button>
+        </section>
+
         <!-- CTA -->
         <section class="cta-section">
             <p class="cta-text">רוצים משהו כזה בשבילכם? בואו נדבר</p>
@@ -88,5 +81,48 @@
         <p>© ליאורה לוי | ++Sea</p>
         <p><a href="mailto:aunisea@gmail.com" class="footer-email">aunisea@gmail.com</a> | <a href="https://wa.me/972584694464?text=%D7%94%D7%99%D7%99%20%D7%9C%D7%99%D7%90%D7%95%D7%A8%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%90%D7%9C%D7%99%D7%9A%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A6%D7%A8%D7%99%20%D7%90%D7%99%D7%AA%D7%99%20%D7%A7%D7%A9%D7%A8" target="_blank" style="color:#40e0d0;text-decoration:none">💬 058-4694464</a></p>
     </footer>
+
+    <!-- Bio Modal -->
+    <div class="bio-modal" id="bioModal">
+        <div class="bio-modal-content">
+            <button type="button" class="bio-modal-close" id="bioModalClose" aria-label="סגור">&times;</button>
+            <p>בשנת 1996 התחלתי את דרכי בעולם ההייטק כמפתחת תכנה. ומאז התקדמתי דרך תפקידי ניהול - החל בניהול פרויקטים, דרך בדיקות ובקרת איכות (QA), תחום שבו הפכתי למומחית.</p>
+
+            <p>לאחר 12 שנים כמנהלת QA התקדמתי לניהול מוצר. יחד עם ההבנה והידע בתכנות וההתמחות בבדיקות, ניהול המוצר נתן לי את הכלים, הניסיון והראיה המערכתית בפיתוח מוצרים.</p>
+
+            <p>לאחר כ-4 שנים כמנהלת מוצר הפכתי לעצמאית. כעצמאית יעצתי לחברות בתחום ה-QA, ולימדתי בדיקות ואוטומציה במשך כ-15 שנה במכללות המובילות בשוק.</p>
+
+            <p>כיום, אני בונה פתרונות ממוקדים בתחומים שונים על פי צרכי הלקוח. אני לא בונה תוכנות "גרנדיוזיות" - אני מתמחה בפתרונות אישיים ומעשיים לעולמות תוכן ספציפיים.</p>
+
+            <p style="color: var(--shore-sand); font-weight: 500;">בדף זה תוכלו לראות חלק מהפתרונות שפיתחתי (:</p>
+
+            <p><a href="https://www.pc.co.il/news/26887/" target="_blank">קראו כתבה עליי כמנהלת מוצר בהייטק ←</a></p>
+        </div>
+    </div>
+
+    <script>
+        const bioBtn = document.getElementById('bioToggleBtn');
+        const bioModal = document.getElementById('bioModal');
+        const bioClose = document.getElementById('bioModalClose');
+
+        function openBioModal() {
+            bioModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBioModal() {
+            bioModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        bioBtn.addEventListener('click', openBioModal);
+        bioClose.addEventListener('click', closeBioModal);
+        bioModal.addEventListener('click', (e) => {
+            if (e.target === bioModal) closeBioModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBioModal();
+        });
+    </script>
 </body>
 </html>

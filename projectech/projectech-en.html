@@ -22,18 +22,6 @@
                 <p class="hook-line-1">Here's how I fund the freedom to be</p>
                 <p class="hook-line-2">Take a peek at the projects I develop for a living</p>
             </div>
-
-            <div style="max-width: 900px; margin: 2rem auto 0; font-size: 1.3125rem; line-height: 1.8; color: var(--white-foam); text-align: left;">
-                <p>In 1996, I started my journey in the world of hi-tech as a software developer. Since then, I have advanced through management positions - starting with project management, through testing and quality assurance (QA), a field in which I became an expert.</p>
-
-                <p>After 12 years as a QA Manager, I advanced to Product Management. Together with my understanding and knowledge of software development and expertise in testing, product management gave me the tools, experience and systems thinking in product development.</p>
-
-                <p>After about 4 years as a Product Manager, I became independent. As a freelancer, I consulted for companies in the QA field, and taught testing and automation for about 15 years at leading colleges in the market.</p>
-
-                <p>Today, I build focused solutions in various fields based on client needs. I don't build "grandiose" software - I specialize in personal and practical solutions for specific content areas.</p>
-
-                <p style="color: var(--shore-sand); font-weight: 500;">On this page you can see some of the solutions I've developed (:</p>
-            </div>
         </section>
 
         <!-- Projects Grid -->
@@ -71,6 +59,11 @@
             </a>
         </section>
 
+        <!-- Bio Toggle -->
+        <section class="bio-toggle-section">
+            <button type="button" class="nav-btn bio-toggle-btn" id="bioToggleBtn">The Techie In Me</button>
+        </section>
+
         <!-- CTA -->
         <section class="cta-section">
             <p class="cta-text">Want something like this for your own project? Let's talk</p>
@@ -88,5 +81,48 @@
         <p>© Liora Levi | ++Sea</p>
         <p><a href="mailto:aunisea@gmail.com" class="footer-email">aunisea@gmail.com</a> | <a href="https://wa.me/972584694464?text=Hi%20Liora%2C%20I%20reached%20out%20to%20you%20through%20your%20website" target="_blank" style="color:#40e0d0;text-decoration:none">💬 +972-58-469-4464</a></p>
     </footer>
+
+    <!-- Bio Modal -->
+    <div class="bio-modal" id="bioModal">
+        <div class="bio-modal-content">
+            <button type="button" class="bio-modal-close" id="bioModalClose" aria-label="Close">&times;</button>
+            <p>In 1996, I started my journey in the world of hi-tech as a software developer. Since then, I have advanced through management positions - starting with project management, through testing and quality assurance (QA), a field in which I became an expert.</p>
+
+            <p>After 12 years as a QA Manager, I advanced to Product Management. Together with my understanding and knowledge of software development and expertise in testing, product management gave me the tools, experience and systems thinking in product development.</p>
+
+            <p>After about 4 years as a Product Manager, I became independent. As a freelancer, I consulted for companies in the QA field, and taught testing and automation for about 15 years at leading colleges in the market.</p>
+
+            <p>Today, I build focused solutions in various fields based on client needs. I don't build "grandiose" software - I specialize in personal and practical solutions for specific content areas.</p>
+
+            <p style="color: var(--shore-sand); font-weight: 500;">On this page you can see some of the solutions I've developed (:</p>
+
+            <p><a href="https://www.pc.co.il/news/26887/" target="_blank">Read a feature about me as a hi-tech product manager (Hebrew) ←</a></p>
+        </div>
+    </div>
+
+    <script>
+        const bioBtn = document.getElementById('bioToggleBtn');
+        const bioModal = document.getElementById('bioModal');
+        const bioClose = document.getElementById('bioModalClose');
+
+        function openBioModal() {
+            bioModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBioModal() {
+            bioModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        bioBtn.addEventListener('click', openBioModal);
+        bioClose.addEventListener('click', closeBioModal);
+        bioModal.addEventListener('click', (e) => {
+            if (e.target === bioModal) closeBioModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBioModal();
+        });
+    </script>
 </body>
 </html>
