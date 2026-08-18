@@ -37,6 +37,53 @@
     margin-bottom: 4rem;
 }
 
+/* Body Text (the write-up itself) */
+.project-body {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--white-foam);
+}
+
+.project-body p {
+    margin-bottom: 1.2rem;
+}
+
+.project-body ul,
+.project-body ol {
+    margin: 0 0 1.2rem;
+    padding-inline-start: 1.5rem;
+}
+
+.project-body li {
+    margin-bottom: 0.5rem;
+}
+
+.project-body h2 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--shore-sand);
+    margin: 2rem 0 1rem;
+}
+
+/* Screenshot Gallery */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.project-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid rgba(156, 199, 217, 0.3);
+}
+
 /* Video Container */
 .video-container {
     position: relative;
