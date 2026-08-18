@@ -173,6 +173,18 @@
     animation: fadeIn 1s ease-out 0.6s both;
 }
 
+.pricing-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--white-foam);
+    margin-bottom: 2rem;
+}
+
+.pricing-text a {
+    color: var(--shore-sand);
+    text-decoration: underline;
+}
+
 .contact-title {
     font-family: 'Heebo', sans-serif;
     font-size: clamp(2rem, 4vw, 2.5rem);
