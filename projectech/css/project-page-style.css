@@ -46,6 +46,11 @@
     color: var(--white-foam);
 }
 
+.project-body a {
+    color: var(--shore-sand);
+    text-decoration: underline;
+}
+
 .project-body p {
     margin-bottom: 1.2rem;
 }
