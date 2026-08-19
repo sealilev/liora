@@ -73,6 +73,10 @@
     margin: 2rem 0 1rem;
 }
 
+.project-row-text h2:first-child {
+    margin-top: 0;
+}
+
 /* Feature Image (standalone, under the header) */
 .project-feature-image {
     display: block;
@@ -107,7 +111,8 @@
 
 .project-row-image img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     border-radius: 8px;
     border: 2px solid rgba(156, 199, 217, 0.3);
 }
