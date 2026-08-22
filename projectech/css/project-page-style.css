@@ -86,6 +86,37 @@
     margin: 0 auto;
     border-radius: 8px;
     border: 2px solid rgba(156, 199, 217, 0.3);
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+}
+
+.project-feature-image:hover {
+    opacity: 0.85;
+}
+
+/* Lightbox (click any project image to see it enlarged) */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 24, 40, 0.95);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    cursor: zoom-out;
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid var(--shore-sand);
 }
 
 /* Text + Image Row (explanation paired with its screenshot) */
@@ -115,6 +146,12 @@
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid rgba(156, 199, 217, 0.3);
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+}
+
+.project-row-image img:hover {
+    opacity: 0.85;
 }
 
 /* Video Container */
