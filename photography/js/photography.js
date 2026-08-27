@@ -18,11 +18,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Purchase modal
+    const WHATSAPP_NUMBER = '972584694464';
     const purchaseModal = document.getElementById('purchaseModal');
     const purchaseModalClose = document.getElementById('purchaseModalClose');
-    const purchaseSubmitBtn = document.getElementById('purchaseSubmitBtn');
+    const digitalPanel = document.getElementById('digitalPanel');
+    const printPanel = document.getElementById('printPanel');
+    const digitalWhatsappBtn = document.getElementById('digitalWhatsappBtn');
+    const printWhatsappBtn = document.getElementById('printWhatsappBtn');
+    const printSizeSelect = document.getElementById('printSize');
+    let currentPhotoName = '';
 
-    function openPurchaseModal() {
+    function getPhotoName(imgEl) {
+        try {
+            const path = new URL(imgEl.src, window.location.href).pathname;
+            const filename = path.substring(path.lastIndexOf('/') + 1);
+            return filename.replace(/\.[^.]+$/, '');
+        } catch (e) {
+            return imgEl.alt || '';
+        }
+    }
+
+    function openPurchaseModal(photoName) {
+        currentPhotoName = photoName;
+        // Reset to defaults every time it opens for a (possibly different) photo
+        purchaseModal.querySelector('input[name="purchaseType"][value="digital"]').checked = true;
+        purchaseModal.querySelector('input[name="printFormat"][value="מבריק"]').checked = true;
+        printSizeSelect.selectedIndex = 0;
+        digitalPanel.hidden = false;
+        printPanel.hidden = true;
+
         purchaseModal.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
@@ -31,6 +55,26 @@ document.addEventListener('DOMContentLoaded', () => {
         purchaseModal.classList.remove('open');
         document.body.style.overflow = '';
     }
+
+    purchaseModal.querySelectorAll('input[name="purchaseType"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const isDigital = purchaseModal.querySelector('input[name="purchaseType"]:checked').value === 'digital';
+            digitalPanel.hidden = !isDigital;
+            printPanel.hidden = isDigital;
+        });
+    });
+
+    digitalWhatsappBtn.addEventListener('click', () => {
+        const text = `היי ליאורה, ברצוני לרכוש מקור של התמונה הדיגיטלית ${currentPhotoName}.`;
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+    });
+
+    printWhatsappBtn.addEventListener('click', () => {
+        const size = printSizeSelect.value;
+        const format = purchaseModal.querySelector('input[name="printFormat"]:checked').value;
+        const text = `היי ליאורה, ברצוני לרכוש את התמונה ${currentPhotoName} בגודל ${size} בפורמט ${format}`;
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+    });
 
     // Story modal ("הפספוס של חיי")
     const storyModal = document.getElementById('storyModal');
@@ -62,15 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         buyBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            openPurchaseModal();
+            openPurchaseModal(getPhotoName(img));
         });
     });
 
     // Lightbox controls
     lightboxClose.addEventListener('click', closeLightbox);
     lightboxBuyBtn.addEventListener('click', () => {
+        const name = getPhotoName(lightboxImg);
         closeLightbox();
-        openPurchaseModal();
+        openPurchaseModal(name);
     });
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
@@ -80,10 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     purchaseModalClose.addEventListener('click', closePurchaseModal);
     purchaseModal.addEventListener('click', (e) => {
         if (e.target === purchaseModal) closePurchaseModal();
-    });
-    purchaseSubmitBtn.addEventListener('click', () => {
-        // Placeholder - form fields and submit behavior to be added later
-        closePurchaseModal();
     });
 
     // Story modal controls

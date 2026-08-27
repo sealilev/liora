@@ -121,15 +121,56 @@
         </div>
     </div>
 
-    <!-- Purchase Modal (structure only, fields to be added later) -->
+    <!-- Purchase Modal -->
     <div class="purchase-modal" id="purchaseModal">
         <div class="purchase-modal-content">
             <button type="button" class="modal-close" id="purchaseModalClose" aria-label="סגור">&times;</button>
             <h2>רכישת תמונה</h2>
-            <div class="purchase-form-placeholder">
-                <!-- שדות הטופס יתווספו בהמשך -->
+
+            <div class="purchase-type-choice">
+                <label>
+                    <input type="radio" name="purchaseType" value="digital" checked>
+                    תמונה דיגיטלית
+                </label>
+                <label>
+                    <input type="radio" name="purchaseType" value="print">
+                    תמונה מודפסת
+                </label>
             </div>
-            <button type="button" class="nav-btn" id="purchaseSubmitBtn">שלח</button>
+
+            <!-- Digital -->
+            <div class="purchase-panel" id="digitalPanel">
+                <button type="button" class="nav-btn whatsapp-purchase-btn" id="digitalWhatsappBtn">💬 שלח הודעת ווצאפ</button>
+            </div>
+
+            <!-- Print -->
+            <div class="purchase-panel" id="printPanel" hidden>
+                <label class="field-label" for="printSize">גודל</label>
+                <select id="printSize" class="purchase-select">
+                    <option value='10x15 ס"מ'>10x15 ס"מ</option>
+                    <option value='15x21 ס"מ'>15x21 ס"מ</option>
+                    <option value='20x30 ס"מ'>20x30 ס"מ</option>
+                    <option value='30x40 ס"מ'>30x40 ס"מ</option>
+                </select>
+
+                <p class="field-label">פורמט</p>
+                <div class="purchase-format-choice">
+                    <label>
+                        <input type="radio" name="printFormat" value="מבריק" checked>
+                        מבריק
+                    </label>
+                    <label>
+                        <input type="radio" name="printFormat" value="מט">
+                        מט
+                    </label>
+                    <label>
+                        <input type="radio" name="printFormat" value="שחור לבן">
+                        שחור לבן
+                    </label>
+                </div>
+
+                <button type="button" class="nav-btn whatsapp-purchase-btn" id="printWhatsappBtn">💬 שלח הודעת ווצאפ</button>
+            </div>
         </div>
     </div>
 

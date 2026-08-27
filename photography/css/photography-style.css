@@ -325,9 +325,71 @@
     line-height: 1.8;
 }
 
-.purchase-form-placeholder {
-    min-height: 2rem;
-    margin-bottom: 1.5rem;
+/* Purchase Type Choice */
+.purchase-type-choice {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+}
+
+.purchase-type-choice label,
+.purchase-format-choice label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white-foam);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.purchase-type-choice input,
+.purchase-format-choice input {
+    accent-color: var(--shore-sand);
+    width: 1.1rem;
+    height: 1.1rem;
+    cursor: pointer;
+}
+
+.purchase-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.purchase-panel[hidden] {
+    display: none;
+}
+
+.field-label {
+    color: var(--sea-foam);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+}
+
+.purchase-select {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.7rem 1rem;
+    background: rgba(10, 24, 40, 0.8);
+    border: 2px solid rgba(156, 199, 217, 0.4);
+    border-radius: 6px;
+    color: var(--white-foam);
+    font-family: 'Heebo', sans-serif;
+    font-size: 1rem;
+}
+
+.purchase-format-choice {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.whatsapp-purchase-btn {
+    margin-top: 0.5rem;
 }
 
 .modal-close {
