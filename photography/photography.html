@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <title>צלמת | ++Sea ליאורה</title>
+    <link rel="stylesheet" href="../css/main-style.css">
+    <link rel="stylesheet" href="css/photography-style.css">
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <main class="photography-page">
+        <!-- Header -->
+        <section class="photography-header">
+            <h1 class="photography-title">צלמת</h1>
+        </section>
+
+        <!-- Weekly Gallery -->
+        <section class="weekly-section">
+            <h2 class="weekly-title">צילומי השבוע</h2>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Miss of My Life -->
+        <section class="story-section">
+            <button type="button" class="nav-btn" id="missOfLifeBtn">הפספוס של חיי</button>
+        </section>
+
+        <!-- All Photos -->
+        <section class="archive-section">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+                <div class="photo-item">
+                    <img src="pics/Shablul.png" alt="צילום">
+                    <button type="button" class="buy-btn">רכישה</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back Button -->
+        <section class="back-section">
+            <a href="../index.html" class="nav-btn">חזרה לדף הראשי</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© ליאורה לוי | ++Sea</p>
+        <p><a href="mailto:aunisea@gmail.com" class="footer-email">aunisea@gmail.com</a> | <a href="https://wa.me/972584694464?text=%D7%94%D7%99%D7%99%20%D7%9C%D7%99%D7%90%D7%95%D7%A8%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%90%D7%9C%D7%99%D7%9A%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A6%D7%A8%D7%99%20%D7%90%D7%99%D7%AA%D7%99%20%D7%A7%D7%A9%D7%A8" target="_blank" style="color:#40e0d0;text-decoration:none">💬 058-4694464</a></p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="photoLightbox">
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-close" id="lightboxClose" aria-label="סגור">&times;</button>
+            <img src="" alt="">
+            <button type="button" class="buy-btn lightbox-buy-btn" id="lightboxBuyBtn">רכישה</button>
+        </div>
+    </div>
+
+    <!-- Purchase Modal (structure only, fields to be added later) -->
+    <div class="purchase-modal" id="purchaseModal">
+        <div class="purchase-modal-content">
+            <button type="button" class="modal-close" id="purchaseModalClose" aria-label="סגור">&times;</button>
+            <h2>רכישת תמונה</h2>
+            <div class="purchase-form-placeholder">
+                <!-- שדות הטופס יתווספו בהמשך -->
+            </div>
+            <button type="button" class="nav-btn" id="purchaseSubmitBtn">שלח</button>
+        </div>
+    </div>
+
+    <!-- Story Modal -->
+    <div class="story-modal" id="storyModal">
+        <div class="story-modal-content">
+            <button type="button" class="modal-close" id="storyModalClose" aria-label="סגור">&times;</button>
+            <h2>הפספוס של חיי</h2>
+            <p>הסיפור בדרך... (:</p>
+        </div>
+    </div>
+
+    <script src="js/photography.js"></script>
+</body>
+</html>
