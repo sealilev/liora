@@ -34,12 +34,102 @@
     margin-bottom: 2rem;
 }
 
-/* Photo Grid (shared by weekly gallery and archive) */
+/* Photo Grid (archive) */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     margin-bottom: 3rem;
+}
+
+/* Weekly Carousel - one large landscape photo at a time, swipeable */
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.carousel-track {
+    flex: 1;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-slide {
+    position: relative;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    cursor: zoom-in;
+}
+
+.carousel-slide img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    border: 2px solid rgba(156, 199, 217, 0.3);
+    border-bottom: none;
+}
+
+.carousel-slide .buy-btn {
+    position: static;
+    border-radius: 0 0 8px 8px;
+    border: 2px solid rgba(156, 199, 217, 0.3);
+    border-top: none;
+}
+
+.carousel-arrow {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: rgba(10, 24, 40, 0.8);
+    border: 2px solid var(--shore-sand);
+    color: var(--shore-sand);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.carousel-arrow:hover {
+    background: var(--shore-sand);
+    color: var(--deep-ocean);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 1.25rem 0 3rem;
+}
+
+.carousel-dots .dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    border: 2px solid var(--shore-sand);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.carousel-dots .dot.active {
+    background: var(--shore-sand);
 }
 
 .photo-item {
@@ -273,5 +363,15 @@
     .buy-btn {
         font-size: 0.75rem;
         padding: 0.4rem;
+    }
+
+    .carousel {
+        gap: 0.4rem;
+    }
+
+    .carousel-arrow {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.2rem;
     }
 }

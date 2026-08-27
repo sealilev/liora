@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         closeStoryModal();
     }
 
-    // Wire up every photo thumbnail
-    document.querySelectorAll('.photo-item').forEach(item => {
-        const img = item.querySelector('img');
-        const buyBtn = item.querySelector('.buy-btn');
+    // Wire up every photo (carousel slides + archive grid items alike)
+    document.querySelectorAll('.photo-card').forEach(card => {
+        const img = card.querySelector('img');
+        const buyBtn = card.querySelector('.buy-btn');
 
         img.addEventListener('click', () => openLightbox(img.src, img.alt));
 
@@ -97,4 +97,65 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeAll();
     });
+
+    // Weekly carousel
+    const track = document.querySelector('.carousel-track');
+    if (track) {
+        const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const dotsContainer = document.querySelector('.carousel-dots');
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `תמונה ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+        let currentIdx = 0;
+
+        function detectIndexFromScroll() {
+            const trackRect = track.getBoundingClientRect();
+            let closest = 0;
+            let closestDist = Infinity;
+            slides.forEach((slide, i) => {
+                const dist = Math.abs(slide.getBoundingClientRect().left - trackRect.left);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closest = i;
+                }
+            });
+            return closest;
+        }
+
+        function setActiveDot(idx) {
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+
+        function goToSlide(i) {
+            currentIdx = Math.max(0, Math.min(slides.length - 1, i));
+            slides[currentIdx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+            // Track state directly rather than re-deriving from live scroll
+            // position, which lags behind during the smooth-scroll animation
+            // and gives wrong results on rapid consecutive clicks.
+            setActiveDot(currentIdx);
+        }
+
+        prevBtn.addEventListener('click', () => goToSlide(currentIdx - 1));
+        nextBtn.addEventListener('click', () => goToSlide(currentIdx + 1));
+
+        // Resync after a manual swipe/drag (which fires real scroll events,
+        // unlike programmatic scrollIntoView) once it settles.
+        let scrollTimeout;
+        track.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                currentIdx = detectIndexFromScroll();
+                setActiveDot(currentIdx);
+            }, 100);
+        });
+    }
 });
