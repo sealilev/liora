@@ -1,13 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Lightbox
+    const WHATSAPP_NUMBER = '972584694464';
+    const SIZE_LABELS = {
+        '1015': '10x15 ס"מ',
+        '1521': '15x21 ס"מ',
+        '2030': '20x30 ס"מ',
+        '3040': '30x40 ס"מ',
+        'other': 'אחר',
+    };
+
+    // ---------- Data loading ----------
+    fetch('data/photos.json')
+        .then(res => res.json())
+        .then(photos => {
+            renderCarousel(photos.filter(p => /^\d+$/.test(p.category)).sort((a, b) => Number(a.category) - Number(b.category)));
+            renderCategories(photos.filter(p => !/^\d+$/.test(p.category)));
+            wirePhotoCards();
+            initCarousel();
+        })
+        .catch(err => console.error('Failed to load photos.json', err));
+
+    function photoCardHtml(photo) {
+        const src = `pics/${encodeURIComponent(photo.file)}`;
+        return `
+            <img src="${src}" alt="${photo.name}" data-name="${photo.name}"
+                 data-price-digital="${photo.priceDigital}"
+                 data-price1015="${photo.price1015}" data-price1521="${photo.price1521}"
+                 data-price2030="${photo.price2030}" data-price3040="${photo.price3040}">
+            <span class="photo-name-tag">${photo.name}</span>
+            <button type="button" class="buy-btn">רכישה</button>`;
+    }
+
+    function renderCarousel(items) {
+        const track = document.getElementById('carouselTrack');
+        track.innerHTML = items.map(p => `<div class="carousel-slide photo-card">${photoCardHtml(p)}</div>`).join('');
+    }
+
+    function renderCategories(items) {
+        const container = document.getElementById('categoriesContainer');
+        const order = [];
+        const groups = {};
+        items.forEach(p => {
+            if (!groups[p.category]) {
+                groups[p.category] = [];
+                order.push(p.category);
+            }
+            groups[p.category].push(p);
+        });
+
+        container.innerHTML = order.map(category => `
+            <section class="archive-section">
+                <h2 class="category-title">${category}</h2>
+                <div class="photo-grid">
+                    ${groups[category].map(p => `<div class="photo-item photo-card">${photoCardHtml(p)}</div>`).join('')}
+                </div>
+            </section>
+        `).join('');
+    }
+
+    // ---------- Lightbox ----------
     const lightbox = document.getElementById('photoLightbox');
     const lightboxImg = lightbox.querySelector('img');
+    const lightboxNameTag = document.getElementById('lightboxNameTag');
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxBuyBtn = document.getElementById('lightboxBuyBtn');
+    let lightboxSourceImg = null;
 
-    function openLightbox(src, alt) {
-        lightboxImg.src = src;
-        lightboxImg.alt = alt || '';
+    function openLightbox(imgEl) {
+        lightboxSourceImg = imgEl;
+        lightboxImg.src = imgEl.src;
+        lightboxImg.alt = imgEl.alt || '';
+        lightboxNameTag.textContent = imgEl.dataset.name || '';
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
@@ -17,35 +79,65 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
-    // Purchase modal
-    const WHATSAPP_NUMBER = '972584694464';
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    lightboxBuyBtn.addEventListener('click', () => {
+        const img = lightboxSourceImg;
+        closeLightbox();
+        if (img) openPurchaseModal(img);
+    });
+
+    // ---------- Purchase modal ----------
     const purchaseModal = document.getElementById('purchaseModal');
     const purchaseModalClose = document.getElementById('purchaseModalClose');
+    const purchaseTitle = document.getElementById('purchaseTitle');
     const digitalPanel = document.getElementById('digitalPanel');
     const printPanel = document.getElementById('printPanel');
     const digitalWhatsappBtn = document.getElementById('digitalWhatsappBtn');
     const printWhatsappBtn = document.getElementById('printWhatsappBtn');
     const printSizeSelect = document.getElementById('printSize');
-    let currentPhotoName = '';
+    let currentPhotoImg = null;
 
-    function getPhotoName(imgEl) {
-        try {
-            const path = new URL(imgEl.src, window.location.href).pathname;
-            const filename = path.substring(path.lastIndexOf('/') + 1);
-            return filename.replace(/\.[^.]+$/, '');
-        } catch (e) {
-            return imgEl.alt || '';
+    function currentPrices() {
+        const d = currentPhotoImg.dataset;
+        return {
+            digital: Number(d.priceDigital),
+            '1015': Number(d.price1015),
+            '1521': Number(d.price1521),
+            '2030': Number(d.price2030),
+            '3040': Number(d.price3040),
+        };
+    }
+
+    function isDigitalSelected() {
+        return purchaseModal.querySelector('input[name="purchaseType"]:checked').value === 'digital';
+    }
+
+    function updatePurchaseTitle() {
+        const name = currentPhotoImg.dataset.name;
+        if (isDigitalSelected()) {
+            purchaseTitle.textContent = `${name} - ₪${currentPrices().digital}`;
+            return;
+        }
+        const size = printSizeSelect.value;
+        if (size === 'other') {
+            purchaseTitle.textContent = `${name} - לתיאום`;
+        } else {
+            purchaseTitle.textContent = `${name} - ₪${currentPrices()[size]}`;
         }
     }
 
-    function openPurchaseModal(photoName) {
-        currentPhotoName = photoName;
+    function openPurchaseModal(imgEl) {
+        currentPhotoImg = imgEl;
         // Reset to defaults every time it opens for a (possibly different) photo
         purchaseModal.querySelector('input[name="purchaseType"][value="digital"]').checked = true;
         purchaseModal.querySelector('input[name="printFormat"][value="מבריק"]').checked = true;
         printSizeSelect.selectedIndex = 0;
         digitalPanel.hidden = false;
         printPanel.hidden = true;
+        updatePurchaseTitle();
 
         purchaseModal.classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -58,25 +150,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     purchaseModal.querySelectorAll('input[name="purchaseType"]').forEach(radio => {
         radio.addEventListener('change', () => {
-            const isDigital = purchaseModal.querySelector('input[name="purchaseType"]:checked').value === 'digital';
-            digitalPanel.hidden = !isDigital;
-            printPanel.hidden = isDigital;
+            const digital = isDigitalSelected();
+            digitalPanel.hidden = !digital;
+            printPanel.hidden = digital;
+            updatePurchaseTitle();
         });
     });
 
+    printSizeSelect.addEventListener('change', updatePurchaseTitle);
+
+    purchaseModalClose.addEventListener('click', closePurchaseModal);
+    purchaseModal.addEventListener('click', (e) => {
+        if (e.target === purchaseModal) closePurchaseModal();
+    });
+
     digitalWhatsappBtn.addEventListener('click', () => {
-        const text = `היי ליאורה, ברצוני לרכוש מקור של התמונה הדיגיטלית ${currentPhotoName}.`;
+        const name = currentPhotoImg.dataset.name;
+        const text = `היי ליאורה, ברצוני לרכוש מקור של התמונה הדיגיטלית ${name}.`;
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     });
 
     printWhatsappBtn.addEventListener('click', () => {
-        const size = printSizeSelect.value;
+        const name = currentPhotoImg.dataset.name;
+        const size = SIZE_LABELS[printSizeSelect.value];
         const format = purchaseModal.querySelector('input[name="printFormat"]:checked').value;
-        const text = `היי ליאורה, ברצוני לרכוש את התמונה ${currentPhotoName} בגודל ${size} בפורמט ${format}`;
+        const text = `היי ליאורה, ברצוני לרכוש את התמונה ${name} בגודל ${size} בפורמט ${format}`;
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     });
 
-    // Story modal ("הפספוס של חיי")
+    // ---------- Story modal ("הפספוס של חיי") ----------
     const storyModal = document.getElementById('storyModal');
     const storyModalClose = document.getElementById('storyModalClose');
     const missOfLifeBtn = document.getElementById('missOfLifeBtn');
@@ -91,61 +193,44 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
-    function closeAll() {
-        closeLightbox();
-        closePurchaseModal();
-        closeStoryModal();
-    }
-
-    // Wire up every photo (carousel slides + archive grid items alike)
-    document.querySelectorAll('.photo-card').forEach(card => {
-        const img = card.querySelector('img');
-        const buyBtn = card.querySelector('.buy-btn');
-
-        img.addEventListener('click', () => openLightbox(img.src, img.alt));
-
-        buyBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openPurchaseModal(getPhotoName(img));
-        });
-    });
-
-    // Lightbox controls
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxBuyBtn.addEventListener('click', () => {
-        const name = getPhotoName(lightboxImg);
-        closeLightbox();
-        openPurchaseModal(name);
-    });
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-
-    // Purchase modal controls
-    purchaseModalClose.addEventListener('click', closePurchaseModal);
-    purchaseModal.addEventListener('click', (e) => {
-        if (e.target === purchaseModal) closePurchaseModal();
-    });
-
-    // Story modal controls
     missOfLifeBtn.addEventListener('click', openStoryModal);
     storyModalClose.addEventListener('click', closeStoryModal);
     storyModal.addEventListener('click', (e) => {
         if (e.target === storyModal) closeStoryModal();
     });
 
-    // Shared Escape handling
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeAll();
+        if (e.key === 'Escape') {
+            closeLightbox();
+            closePurchaseModal();
+            closeStoryModal();
+        }
     });
 
-    // Weekly carousel
-    const track = document.querySelector('.carousel-track');
-    if (track) {
+    // ---------- Wire up dynamically-rendered photo cards ----------
+    function wirePhotoCards() {
+        document.querySelectorAll('.photo-card').forEach(card => {
+            const img = card.querySelector('img');
+            const buyBtn = card.querySelector('.buy-btn');
+
+            img.addEventListener('click', () => openLightbox(img));
+            buyBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openPurchaseModal(img);
+            });
+        });
+    }
+
+    // ---------- Weekly carousel navigation ----------
+    function initCarousel() {
+        const track = document.querySelector('.carousel-track');
         const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+        if (slides.length === 0) return;
+
         const prevBtn = document.querySelector('.carousel-prev');
         const nextBtn = document.querySelector('.carousel-next');
-        const dotsContainer = document.querySelector('.carousel-dots');
+        const dotsContainer = document.getElementById('carouselDots');
+        dotsContainer.innerHTML = '';
 
         slides.forEach((_, i) => {
             const dot = document.createElement('button');

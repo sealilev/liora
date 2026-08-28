@@ -25,7 +25,8 @@
     margin-bottom: 3rem;
 }
 
-.weekly-title {
+.weekly-title,
+.category-title {
     font-family: 'Heebo', sans-serif;
     font-size: 1.6rem;
     font-weight: 500;
@@ -34,12 +35,33 @@
     margin-bottom: 2rem;
 }
 
+/* Category Galleries */
+.archive-section {
+    margin-bottom: 3rem;
+}
+
 /* Photo Grid (archive) */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     margin-bottom: 3rem;
+}
+
+/* Photo Name Tag - shown on every photo, small + large view alike */
+.photo-name-tag {
+    position: absolute;
+    top: 0.5rem;
+    inset-inline-start: 0.5rem;
+    background: rgba(10, 24, 40, 0.75);
+    color: var(--shore-sand);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    pointer-events: none;
+    z-index: 1;
 }
 
 /* Weekly Carousel - one large landscape photo at a time, swipeable */
@@ -390,6 +412,14 @@
 
 .whatsapp-purchase-btn {
     margin-top: 0.5rem;
+}
+
+.purchase-disclaimer {
+    color: var(--white-foam);
+    opacity: 0.7;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    max-width: 320px;
 }
 
 .modal-close {

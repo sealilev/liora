@@ -1,0 +1,57 @@
+[
+  {
+    "name": "שבלול",
+    "nameEn": "Snail",
+    "file": "שבלול.png",
+    "category": "עולם הים",
+    "priceDigital": 10,
+    "price1015": 20,
+    "price1521": 40,
+    "price2030": 80,
+    "price3040": 200
+  },
+  {
+    "name": "שבלול1",
+    "nameEn": "Snail",
+    "file": "שבלול1.png",
+    "category": "עולם החי",
+    "priceDigital": 10,
+    "price1015": 20,
+    "price1521": 40,
+    "price2030": 80,
+    "price3040": 200
+  },
+  {
+    "name": "שבלול2",
+    "nameEn": "Snail",
+    "file": "שבלול2.png",
+    "category": "עולם הטעם",
+    "priceDigital": 10,
+    "price1015": 20,
+    "price1521": 40,
+    "price2030": 80,
+    "price3040": 200
+  },
+  {
+    "name": "שבלול3",
+    "nameEn": "Snail",
+    "file": "שבלול3.png",
+    "category": "1",
+    "priceDigital": 10,
+    "price1015": 20,
+    "price1521": 40,
+    "price2030": 80,
+    "price3040": 200
+  },
+  {
+    "name": "שבלול4",
+    "nameEn": "Snail",
+    "file": "שבלול4.png",
+    "category": "2",
+    "priceDigital": 10,
+    "price1015": 20,
+    "price1521": 40,
+    "price2030": 80,
+    "price3040": 200
+  }
+]
