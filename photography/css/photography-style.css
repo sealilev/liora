@@ -217,6 +217,9 @@
     letter-spacing: 0.1em;
     transition: all 0.3s ease;
     position: relative;
+    z-index: 0; /* give the button its own stacking context so ::before's z-index:-1
+                   stays scoped to it, instead of escaping behind an ancestor's
+                   background (e.g. .purchase-modal-content) when nested in the modal */
     overflow: hidden;
     display: inline-block;
     cursor: pointer;

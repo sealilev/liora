@@ -9,3 +9,7 @@ Present Simple/
 # Demo videos — hosted on YouTube instead of in the repo
 *.mp4
 *.mov
+
+# Clean (unwatermarked) photo originals — private, only the baked/watermarked
+# copies in photography/pics/ are meant to be public
+photography/originals/

@@ -1,57 +1,86 @@
 [
   {
+    "name": "אור היין",
+    "nameEn": "Wine Light",
+    "file": "taste/אור היין.png",
+    "category": "עולם הטעם",
+    "priceDigitalPersonal": 50,
+    "priceDigitalCommercial": 300,
+    "price1015": 80,
+    "price1521": 90,
+    "price2030": 130,
+    "price3040": 220
+  },
+  {
+    "name": "נרות היין",
+    "nameEn": "Wine Candles",
+    "file": "taste/נרות היין.png",
+    "category": "עולם הטעם",
+    "priceDigitalPersonal": 50,
+    "priceDigitalCommercial": 300,
+    "price1015": 80,
+    "price1521": 90,
+    "price2030": 130,
+    "price3040": 220
+  },
+  {
+    "name": "השתקפות בחלון",
+    "nameEn": "Window Reflection",
+    "file": "sea/השתקפות בחלון.png",
+    "category": "עולם הים",
+    "priceDigitalPersonal": 60,
+    "priceDigitalCommercial": 500,
+    "price1015": 90,
+    "price1521": 100,
+    "price2030": 140,
+    "price3040": 250
+  },
+  {
     "name": "שבלול",
     "nameEn": "Snail",
-    "file": "שבלול.png",
-    "category": "עולם הים",
-    "priceDigital": 10,
-    "price1015": 20,
-    "price1521": 40,
-    "price2030": 80,
-    "price3040": 200
-  },
-  {
-    "name": "שבלול1",
-    "nameEn": "Snail",
-    "file": "שבלול1.png",
-    "category": "עולם החי",
-    "priceDigital": 10,
-    "price1015": 20,
-    "price1521": 40,
-    "price2030": 80,
-    "price3040": 200
-  },
-  {
-    "name": "שבלול2",
-    "nameEn": "Snail",
-    "file": "שבלול2.png",
-    "category": "עולם הטעם",
-    "priceDigital": 10,
-    "price1015": 20,
-    "price1521": 40,
-    "price2030": 80,
-    "price3040": 200
-  },
-  {
-    "name": "שבלול3",
-    "nameEn": "Snail",
-    "file": "שבלול3.png",
-    "category": "1",
-    "priceDigital": 10,
-    "price1015": 20,
-    "price1521": 40,
-    "price2030": 80,
-    "price3040": 200
-  },
-  {
-    "name": "שבלול4",
-    "nameEn": "Snail",
-    "file": "שבלול4.png",
+    "file": "weekly/שבלול.png",
     "category": "2",
-    "priceDigital": 10,
-    "price1015": 20,
-    "price1521": 40,
-    "price2030": 80,
-    "price3040": 200
+    "priceDigitalPersonal": 55,
+    "priceDigitalCommercial": 400,
+    "price1015": 85,
+    "price1521": 95,
+    "price2030": 135,
+    "price3040": 235
+  },
+  {
+    "name": "סדק האור",
+    "nameEn": "Crack of Light",
+    "file": "sea/סדק האור.png",
+    "category": "עולם הים",
+    "priceDigitalPersonal": 55,
+    "priceDigitalCommercial": 400,
+    "price1015": 85,
+    "price1521": 95,
+    "price2030": 135,
+    "price3040": 235
+  },
+  {
+    "name": "זקוף",
+    "nameEn": "Upright",
+    "file": "land/זקוף.png",
+    "category": "עולם היבשה",
+    "priceDigitalPersonal": 50,
+    "priceDigitalCommercial": 300,
+    "price1015": 80,
+    "price1521": 90,
+    "price2030": 130,
+    "price3040": 220
+  },
+  {
+    "name": "טיפת שקיעה",
+    "nameEn": "Sunset Drop",
+    "file": "weekly/טיפת שקיעה.png",
+    "category": "1",
+    "priceDigitalPersonal": 60,
+    "priceDigitalCommercial": 500,
+    "price1015": 90,
+    "price1521": 100,
+    "price2030": 140,
+    "price3040": 250
   }
 ]

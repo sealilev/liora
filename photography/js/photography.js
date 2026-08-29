@@ -20,10 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(err => console.error('Failed to load photos.json', err));
 
     function photoCardHtml(photo) {
-        const src = `pics/${encodeURIComponent(photo.file)}`;
+        // photo.file is "<folder>/<name>.png" — encode each path segment on its
+        // own so the "/" itself isn't escaped into %2F.
+        const src = `pics/${photo.file.split('/').map(encodeURIComponent).join('/')}`;
         return `
             <img src="${src}" alt="${photo.name}" data-name="${photo.name}"
-                 data-price-digital="${photo.priceDigital}"
+                 data-price-personal="${photo.priceDigitalPersonal}" data-price-commercial="${photo.priceDigitalCommercial}"
                  data-price1015="${photo.price1015}" data-price1521="${photo.price1521}"
                  data-price2030="${photo.price2030}" data-price3040="${photo.price3040}">
             <span class="photo-name-tag">${photo.name}</span>
@@ -65,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxBuyBtn = document.getElementById('lightboxBuyBtn');
     let lightboxSourceImg = null;
 
+    // Note: the copyright watermark is baked directly into the image file
+    // itself (see bake_watermark.py) rather than drawn as a CSS overlay here —
+    // that way it's present no matter how the image is accessed (direct URL,
+    // right-click save, etc.), not just when viewed through this lightbox.
     function openLightbox(imgEl) {
         lightboxSourceImg = imgEl;
         lightboxImg.src = imgEl.src;
@@ -103,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function currentPrices() {
         const d = currentPhotoImg.dataset;
         return {
-            digital: Number(d.priceDigital),
+            personal: Number(d.pricePersonal),
+            commercial: Number(d.priceCommercial),
             '1015': Number(d.price1015),
             '1521': Number(d.price1521),
             '2030': Number(d.price2030),
@@ -118,7 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function updatePurchaseTitle() {
         const name = currentPhotoImg.dataset.name;
         if (isDigitalSelected()) {
-            purchaseTitle.textContent = `${name} - ₪${currentPrices().digital}`;
+            // Personal/commercial pricing shown as the two license radio
+            // labels instead, so the title is just the photo name here.
+            purchaseTitle.textContent = name;
             return;
         }
         const size = printSizeSelect.value;
@@ -131,8 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openPurchaseModal(imgEl) {
         currentPhotoImg = imgEl;
+        document.getElementById('personalPriceLabel').textContent = imgEl.dataset.pricePersonal;
+        document.getElementById('commercialPriceLabel').textContent = imgEl.dataset.priceCommercial;
         // Reset to defaults every time it opens for a (possibly different) photo
         purchaseModal.querySelector('input[name="purchaseType"][value="digital"]').checked = true;
+        // Deliberately left unchecked - the buyer must actively choose personal
+        // vs. commercial, not fall through on a default they didn't notice.
+        purchaseModal.querySelectorAll('input[name="digitalLicense"]').forEach(r => { r.checked = false; });
         purchaseModal.querySelector('input[name="printFormat"][value="מבריק"]').checked = true;
         printSizeSelect.selectedIndex = 0;
         digitalPanel.hidden = false;
@@ -165,16 +179,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     digitalWhatsappBtn.addEventListener('click', () => {
+        const licenseRadio = purchaseModal.querySelector('input[name="digitalLicense"]:checked');
+        if (!licenseRadio) {
+            alert('נא לבחור האם התמונה היא לשימוש אישי או מסחרי');
+            return;
+        }
         const name = currentPhotoImg.dataset.name;
-        const text = `היי ליאורה, ברצוני לרכוש מקור של התמונה הדיגיטלית ${name}.`;
+        const licenseLabel = licenseRadio.value === 'personal' ? 'אישי' : 'מסחרי';
+        const price = currentPrices()[licenseRadio.value];
+        const text = `היי ליאורה, ברצוני לרכוש מקור של התמונה הדיגיטלית ${name} לשימוש ${licenseLabel}, ב ${price} ש"ח.`;
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     });
 
     printWhatsappBtn.addEventListener('click', () => {
         const name = currentPhotoImg.dataset.name;
-        const size = SIZE_LABELS[printSizeSelect.value];
+        const sizeKey = printSizeSelect.value;
+        const size = SIZE_LABELS[sizeKey];
         const format = purchaseModal.querySelector('input[name="printFormat"]:checked').value;
-        const text = `היי ליאורה, ברצוני לרכוש את התמונה ${name} בגודל ${size} בפורמט ${format}`;
+        let text = `היי ליאורה, ברצוני לרכוש את התמונה ${name} בגודל ${size} בפורמט ${format}`;
+        // "אחר" has no fixed price (לתיאום) - nothing to append in that case.
+        if (sizeKey !== 'other') {
+            text += `, ב ${currentPrices()[sizeKey]} ש"ח.`;
+        } else {
+            text += '.';
+        }
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     });
 
