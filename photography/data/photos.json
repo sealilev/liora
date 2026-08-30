@@ -1,5 +1,17 @@
 [
   {
+    "name": "השתקפות בחלון",
+    "nameEn": "Window Reflection",
+    "file": "sea/השתקפות בחלון.png",
+    "category": "עולם הים",
+    "priceDigitalPersonal": 60,
+    "priceDigitalCommercial": 500,
+    "price1015": 90,
+    "price1521": 100,
+    "price2030": 140,
+    "price3040": 250
+  },
+  {
     "name": "אור היין",
     "nameEn": "Wine Light",
     "file": "taste/אור היין.png",
@@ -22,18 +34,6 @@
     "price1521": 90,
     "price2030": 130,
     "price3040": 220
-  },
-  {
-    "name": "השתקפות בחלון",
-    "nameEn": "Window Reflection",
-    "file": "sea/השתקפות בחלון.png",
-    "category": "עולם הים",
-    "priceDigitalPersonal": 60,
-    "priceDigitalCommercial": 500,
-    "price1015": 90,
-    "price1521": 100,
-    "price2030": 140,
-    "price3040": 250
   },
   {
     "name": "שבלול",
@@ -76,6 +76,30 @@
     "nameEn": "Sunset Drop",
     "file": "weekly/טיפת שקיעה.png",
     "category": "1",
+    "priceDigitalPersonal": 60,
+    "priceDigitalCommercial": 500,
+    "price1015": 90,
+    "price1521": 100,
+    "price2030": 140,
+    "price3040": 250
+  },
+  {
+    "name": "זריחה",
+    "nameEn": "Sunrise",
+    "file": "sea/זריחה.png",
+    "category": "עולם הים",
+    "priceDigitalPersonal": 55,
+    "priceDigitalCommercial": 400,
+    "price1015": 85,
+    "price1521": 95,
+    "price2030": 135,
+    "price3040": 235
+  },
+  {
+    "name": "השתקפות",
+    "nameEn": "Reflection",
+    "file": "sea/השתקפות.png",
+    "category": "עולם הים",
     "priceDigitalPersonal": 60,
     "priceDigitalCommercial": 500,
     "price1015": 90,
