@@ -154,17 +154,5 @@
     "price1521": 95,
     "price2030": 135,
     "price3040": 235
-  },
-  {
-    "name": "פגישה",
-    "nameEn": "Encounter",
-    "file": "sea/פגישה.png",
-    "category": "עולם הים",
-    "priceDigitalPersonal": 55,
-    "priceDigitalCommercial": 400,
-    "price1015": 85,
-    "price1521": 95,
-    "price2030": 135,
-    "price3040": 235
   }
 ]
