@@ -60,19 +60,19 @@
 }
 
 .story-text p {
-    margin-bottom: 1.4rem;
+    margin-bottom: 0.5rem;
 }
 
-.story-text .story-beat {
-    text-align: center;
-    font-weight: 500;
-    color: var(--shore-sand);
-    margin: 2rem 0;
+/* The closing two lines read as their own paragraph, set apart from the
+   long first paragraph by a bit of extra space - not styled as a "heading",
+   just a beat before the photo. */
+.story-text .story-closing-lines:first-of-type {
+    margin-top: 1.5rem;
 }
 
 .story-photo {
     text-align: center;
-    margin: 3rem 0 2rem;
+    margin: 2.5rem 0 1.5rem;
 }
 
 .story-photo img {
@@ -80,6 +80,14 @@
     width: 60%;
     border-radius: 8px;
     border: 2px solid rgba(156, 199, 217, 0.3);
+}
+
+.story-signoff {
+    text-align: center;
+    color: var(--shore-sand);
+    opacity: 0.85;
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
 }
 
 @media (max-width: 600px) {
