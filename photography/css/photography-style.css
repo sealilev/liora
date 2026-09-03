@@ -304,9 +304,8 @@
     padding: 0.5rem;
 }
 
-/* Purchase Modal / Story Modal (shared look) */
-.purchase-modal,
-.story-modal {
+/* Purchase Modal */
+.purchase-modal {
     display: none;
     position: fixed;
     inset: 0;
@@ -317,13 +316,11 @@
     padding: 2rem;
 }
 
-.purchase-modal.open,
-.story-modal.open {
+.purchase-modal.open {
     display: flex;
 }
 
-.purchase-modal-content,
-.story-modal-content {
+.purchase-modal-content {
     position: relative;
     max-width: 500px;
     width: 100%;
@@ -336,18 +333,11 @@
     text-align: center;
 }
 
-.purchase-modal-content h2,
-.story-modal-content h2 {
+.purchase-modal-content h2 {
     font-family: 'Heebo', sans-serif;
     font-weight: 400;
     color: var(--sea-foam);
     margin-bottom: 1.5rem;
-}
-
-.story-modal-content p {
-    color: var(--white-foam);
-    font-size: 1.1rem;
-    line-height: 1.8;
 }
 
 /* Purchase Type Choice */

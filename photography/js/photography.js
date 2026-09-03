@@ -206,32 +206,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     });
 
-    // ---------- Story modal ("הפספוס של חיי") ----------
-    const storyModal = document.getElementById('storyModal');
-    const storyModalClose = document.getElementById('storyModalClose');
-    const missOfLifeBtn = document.getElementById('missOfLifeBtn');
-
-    function openStoryModal() {
-        storyModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeStoryModal() {
-        storyModal.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    missOfLifeBtn.addEventListener('click', openStoryModal);
-    storyModalClose.addEventListener('click', closeStoryModal);
-    storyModal.addEventListener('click', (e) => {
-        if (e.target === storyModal) closeStoryModal();
-    });
+    // Note: "הפספוס של חיי" is now its own page (story.html), not a modal.
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeLightbox();
             closePurchaseModal();
-            closeStoryModal();
         }
     });
 

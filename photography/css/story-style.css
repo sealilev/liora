@@ -1,0 +1,94 @@
+/* Story Page ("הפספוס של חיי") */
+
+.story-close {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.25rem;
+    z-index: 100;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(10, 24, 40, 0.8);
+    border: 2px solid var(--shore-sand);
+    color: var(--shore-sand);
+    font-size: 1.8rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.story-close:hover {
+    background: var(--shore-sand);
+    color: var(--deep-ocean);
+}
+
+.story-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 2rem;
+}
+
+.story-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.story-title {
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 300;
+    color: var(--sea-foam);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.story-intro {
+    font-family: 'Heebo', sans-serif;
+    font-style: italic;
+    color: var(--shore-sand);
+    opacity: 0.85;
+    font-size: 1.05rem;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--white-foam);
+}
+
+.story-text p {
+    margin-bottom: 1.4rem;
+}
+
+.story-text .story-beat {
+    text-align: center;
+    font-weight: 500;
+    color: var(--shore-sand);
+    margin: 2rem 0;
+}
+
+.story-photo {
+    text-align: center;
+    margin: 3rem 0 2rem;
+}
+
+.story-photo img {
+    max-width: 220px;
+    width: 60%;
+    border-radius: 8px;
+    border: 2px solid rgba(156, 199, 217, 0.3);
+}
+
+@media (max-width: 600px) {
+    .story-page {
+        padding: 4.5rem 1.25rem 1.5rem;
+    }
+
+    .story-text {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+}
