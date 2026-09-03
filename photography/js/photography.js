@@ -1,12 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
     const WHATSAPP_NUMBER = '972584694464';
+    const LANG = document.documentElement.lang === 'en' ? 'en' : 'he';
+    const CURRENCY = LANG === 'en' ? '€' : '₪';
+
     const SIZE_LABELS = {
-        '1015': '10x15 ס"מ',
-        '1521': '15x21 ס"מ',
-        '2030': '20x30 ס"מ',
-        '3040': '30x40 ס"מ',
-        'other': 'אחר',
-    };
+        he: { '1015': '10x15 ס"מ', '1521': '15x21 ס"מ', '2030': '20x30 ס"מ', '3040': '30x40 ס"מ', other: 'אחר' },
+        en: { '1015': '10x15 cm', '1521': '15x21 cm', '2030': '20x30 cm', '3040': '30x40 cm', other: 'other' },
+    }[LANG];
+
+    const T = {
+        he: {
+            buy: 'רכישה',
+            slideAlt: n => `תמונה ${n}`,
+            chooseLicense: 'נא לבחור האם התמונה היא לשימוש אישי או מסחרי',
+            printBySize: 'לתיאום',
+            licensePersonal: 'אישי',
+            licenseCommercial: 'מסחרי',
+            digitalMessage: (name, license, price) =>
+                `היי ליאורה, ברצוני לרכוש מקור של התמונה הדיגיטלית ${name} לשימוש ${license}, ב ${price} ש"ח.`,
+            printMessage: (name, size, format) => `היי ליאורה, ברצוני לרכוש את התמונה ${name} בגודל ${size} בפורמט ${format}`,
+            printMessagePrice: price => `, ב ${price} ש"ח.`,
+            printMessageOther: '.',
+        },
+        en: {
+            buy: 'Buy',
+            slideAlt: n => `Photo ${n}`,
+            chooseLicense: 'Please choose whether the photo is for personal or commercial use',
+            printBySize: 'to be arranged',
+            licensePersonal: 'personal',
+            licenseCommercial: 'commercial',
+            digitalMessage: (name, license, price) =>
+                `Hi Liora, I'd like to purchase the original of the digital photo "${name}" for ${license} use, at ${CURRENCY}${price}.`,
+            printMessage: (name, size, format) => `Hi Liora, I'd like to purchase the photo "${name}" in size ${size}, ${format} finish`,
+            printMessagePrice: price => `, at ${CURRENCY}${price}.`,
+            printMessageOther: '.',
+        },
+    }[LANG];
 
     // ---------- Data loading ----------
     fetch('data/photos.json')
@@ -23,13 +52,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // photo.file is "<folder>/<name>.png" — encode each path segment on its
         // own so the "/" itself isn't escaped into %2F.
         const src = `pics/${photo.file.split('/').map(encodeURIComponent).join('/')}`;
+        const displayName = LANG === 'en' ? (photo.nameEn || photo.name) : photo.name;
+        const personal = LANG === 'en' ? photo.priceDigitalPersonalEUR : photo.priceDigitalPersonal;
+        const commercial = LANG === 'en' ? photo.priceDigitalCommercialEUR : photo.priceDigitalCommercial;
+        const p1015 = LANG === 'en' ? photo.price1015EUR : photo.price1015;
+        const p1521 = LANG === 'en' ? photo.price1521EUR : photo.price1521;
+        const p2030 = LANG === 'en' ? photo.price2030EUR : photo.price2030;
+        const p3040 = LANG === 'en' ? photo.price3040EUR : photo.price3040;
         return `
-            <img src="${src}" alt="${photo.name}" data-name="${photo.name}"
-                 data-price-personal="${photo.priceDigitalPersonal}" data-price-commercial="${photo.priceDigitalCommercial}"
-                 data-price1015="${photo.price1015}" data-price1521="${photo.price1521}"
-                 data-price2030="${photo.price2030}" data-price3040="${photo.price3040}">
-            <span class="photo-name-tag">${photo.name}</span>
-            <button type="button" class="buy-btn">רכישה</button>`;
+            <img src="${src}" alt="${displayName}" data-name="${displayName}"
+                 data-price-personal="${personal}" data-price-commercial="${commercial}"
+                 data-price1015="${p1015}" data-price1521="${p1521}"
+                 data-price2030="${p2030}" data-price3040="${p3040}">
+            <span class="photo-name-tag">${displayName}</span>
+            <button type="button" class="buy-btn">${T.buy}</button>`;
     }
 
     function renderCarousel(items) {
@@ -49,14 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
             groups[p.category].push(p);
         });
 
-        container.innerHTML = order.map(category => `
+        container.innerHTML = order.map(category => {
+            const items = groups[category];
+            const heading = LANG === 'en' ? (items[0].categoryEn || category) : category;
+            return `
             <section class="archive-section">
-                <h2 class="category-title">${category}</h2>
+                <h2 class="category-title">${heading}</h2>
                 <div class="photo-grid">
-                    ${groups[category].map(p => `<div class="photo-item photo-card">${photoCardHtml(p)}</div>`).join('')}
+                    ${items.map(p => `<div class="photo-item photo-card">${photoCardHtml(p)}</div>`).join('')}
                 </div>
             </section>
-        `).join('');
+        `;
+        }).join('');
     }
 
     // ---------- Lightbox ----------
@@ -132,9 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const size = printSizeSelect.value;
         if (size === 'other') {
-            purchaseTitle.textContent = `${name} - לתיאום`;
+            purchaseTitle.textContent = `${name} - ${T.printBySize}`;
         } else {
-            purchaseTitle.textContent = `${name} - ₪${currentPrices()[size]}`;
+            purchaseTitle.textContent = `${name} - ${CURRENCY}${currentPrices()[size]}`;
         }
     }
 
@@ -147,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Deliberately left unchecked - the buyer must actively choose personal
         // vs. commercial, not fall through on a default they didn't notice.
         purchaseModal.querySelectorAll('input[name="digitalLicense"]').forEach(r => { r.checked = false; });
-        purchaseModal.querySelector('input[name="printFormat"][value="מבריק"]').checked = true;
+        purchaseModal.querySelectorAll('input[name="printFormat"]')[0].checked = true;
         printSizeSelect.selectedIndex = 0;
         digitalPanel.hidden = false;
         printPanel.hidden = true;
@@ -181,13 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
     digitalWhatsappBtn.addEventListener('click', () => {
         const licenseRadio = purchaseModal.querySelector('input[name="digitalLicense"]:checked');
         if (!licenseRadio) {
-            alert('נא לבחור האם התמונה היא לשימוש אישי או מסחרי');
+            alert(T.chooseLicense);
             return;
         }
         const name = currentPhotoImg.dataset.name;
-        const licenseLabel = licenseRadio.value === 'personal' ? 'אישי' : 'מסחרי';
+        const licenseLabel = licenseRadio.value === 'personal' ? T.licensePersonal : T.licenseCommercial;
         const price = currentPrices()[licenseRadio.value];
-        const text = `היי ליאורה, ברצוני לרכוש מקור של התמונה הדיגיטלית ${name} לשימוש ${licenseLabel}, ב ${price} ש"ח.`;
+        const text = T.digitalMessage(name, licenseLabel, price);
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     });
 
@@ -196,17 +236,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const sizeKey = printSizeSelect.value;
         const size = SIZE_LABELS[sizeKey];
         const format = purchaseModal.querySelector('input[name="printFormat"]:checked').value;
-        let text = `היי ליאורה, ברצוני לרכוש את התמונה ${name} בגודל ${size} בפורמט ${format}`;
-        // "אחר" has no fixed price (לתיאום) - nothing to append in that case.
-        if (sizeKey !== 'other') {
-            text += `, ב ${currentPrices()[sizeKey]} ש"ח.`;
-        } else {
-            text += '.';
-        }
+        let text = T.printMessage(name, size, format);
+        // "אחר"/"other" has no fixed price (to be arranged) - nothing to append in that case.
+        text += sizeKey !== 'other' ? T.printMessagePrice(currentPrices()[sizeKey]) : T.printMessageOther;
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
     });
 
-    // Note: "הפספוס של חיי" is now its own page (story.html), not a modal.
+    // Note: "הפספוס של חיי" / "The Miss of My Life" is its own page
+    // (story.html / story-en.html), not a modal.
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
@@ -244,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dot = document.createElement('button');
             dot.type = 'button';
             dot.className = 'dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', `תמונה ${i + 1}`);
+            dot.setAttribute('aria-label', T.slideAlt(i + 1));
             dot.addEventListener('click', () => goToSlide(i));
             dotsContainer.appendChild(dot);
         });

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="alternate" hreflang="he" href="https://sealilev.github.io/liora/photography/photography.html">
+    <link rel="alternate" hreflang="en" href="https://sealilev.github.io/liora/photography/photography-en.html">
+    <link rel="alternate" hreflang="x-default" href="https://sealilev.github.io/liora/photography/photography.html">
+    <title>Photography | ++Sea Liora</title>
+    <link rel="stylesheet" href="../css/main-style.css">
+    <link rel="stylesheet" href="css/photography-style.css">
+</head>
+<body>
+    <div class="ocean-bg"></div>
+
+    <!-- Language Switch -->
+    <a href="photography.html" class="lang-switch">עב</a>
+
+    <main class="photography-page">
+        <!-- Header -->
+        <section class="photography-header">
+            <h1 class="photography-title">Photography</h1>
+        </section>
+
+        <!-- Weekly Carousel -->
+        <section class="weekly-section">
+            <h2 class="weekly-title">Photos of the Week</h2>
+            <div class="carousel">
+                <button type="button" class="carousel-arrow carousel-prev" aria-label="Previous">‹</button>
+                <div class="carousel-track" id="carouselTrack"></div>
+                <button type="button" class="carousel-arrow carousel-next" aria-label="Next">›</button>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </section>
+
+        <!-- The Miss of My Life -->
+        <section class="story-section">
+            <a href="story-en.html" class="nav-btn">The Miss of My Life</a>
+        </section>
+
+        <!-- Category Galleries (rendered from data) -->
+        <div id="categoriesContainer"></div>
+
+        <!-- Hire as photographer CTA -->
+        <section class="story-section">
+            <a href="https://wa.me/972584694464?text=Hi%20Liora%2C%20I%27m%20reaching%20out%20to%20you%20as%20a%20photographer%20from%20your%20website.%20I%27d%20love%20to%20chat." target="_blank" class="nav-btn">💬 Send a WhatsApp Message</a>
+        </section>
+
+        <!-- Back Button -->
+        <section class="back-section">
+            <a href="../index-en.html" class="nav-btn">Back to Home</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© Liora Levi | ++Sea</p>
+        <p><a href="mailto:aunisea@gmail.com" class="footer-email">aunisea@gmail.com</a> | <a href="https://wa.me/972584694464?text=Hi%20Liora%2C%20I%20found%20you%20through%20your%20website" target="_blank" style="color:#40e0d0;text-decoration:none">💬 +972-58-469-4464</a></p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="photoLightbox">
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+            <span class="photo-name-tag" id="lightboxNameTag"></span>
+            <img src="" alt="">
+            <button type="button" class="buy-btn lightbox-buy-btn" id="lightboxBuyBtn">Buy</button>
+        </div>
+    </div>
+
+    <!-- Purchase Modal -->
+    <div class="purchase-modal" id="purchaseModal">
+        <div class="purchase-modal-content">
+            <button type="button" class="modal-close" id="purchaseModalClose" aria-label="Close">&times;</button>
+            <h2 id="purchaseTitle">Buy Photo</h2>
+
+            <div class="purchase-type-choice">
+                <label>
+                    <input type="radio" name="purchaseType" value="digital" checked>
+                    Digital Photo
+                </label>
+                <label>
+                    <input type="radio" name="purchaseType" value="print">
+                    Printed Photo
+                </label>
+            </div>
+
+            <!-- Digital -->
+            <div class="purchase-panel" id="digitalPanel">
+                <div class="purchase-format-choice">
+                    <label>
+                        <input type="radio" name="digitalLicense" value="personal">
+                        Personal use - €<span id="personalPriceLabel">50</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="digitalLicense" value="commercial">
+                        Commercial use - €<span id="commercialPriceLabel">250</span>
+                    </label>
+                </div>
+                <button type="button" class="nav-btn whatsapp-purchase-btn" id="digitalWhatsappBtn">💬 Send WhatsApp Message</button>
+            </div>
+
+            <!-- Print -->
+            <div class="purchase-panel" id="printPanel" hidden>
+                <label class="field-label" for="printSize">Size</label>
+                <select id="printSize" class="purchase-select">
+                    <option value="1015">10x15 cm</option>
+                    <option value="1521">15x21 cm</option>
+                    <option value="2030">20x30 cm</option>
+                    <option value="3040">30x40 cm</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <p class="field-label">Finish</p>
+                <div class="purchase-format-choice">
+                    <label>
+                        <input type="radio" name="printFormat" value="Glossy" checked>
+                        Glossy
+                    </label>
+                    <label>
+                        <input type="radio" name="printFormat" value="Matte">
+                        Matte
+                    </label>
+                    <label>
+                        <input type="radio" name="printFormat" value="Black &amp; White">
+                        Black &amp; White
+                    </label>
+                </div>
+
+                <p class="purchase-disclaimer">The price shown is for printing the photo only; additional costs may apply.</p>
+
+                <button type="button" class="nav-btn whatsapp-purchase-btn" id="printWhatsappBtn">💬 Send WhatsApp Message</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/photography.js"></script>
+</body>
+</html>

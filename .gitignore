@@ -13,3 +13,6 @@ Present Simple/
 # Clean (unwatermarked) photo originals — private, only the baked/watermarked
 # copies in photography/pics/ are meant to be public
 photography/originals/
+
+# User's own working drafts (Word docs etc.) - not site content
+photography/*.docx
