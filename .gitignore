@@ -18,5 +18,8 @@ photography/originals/
 photography/*.docx
 
 # Staged/candidate photos not yet in the catalog ("להמשך" sheet) - private,
-# ignored by the CSV->JSON pipeline too since nothing in photos.csv points here
+# ignored by the CSV->JSON pipeline too since nothing in photos.csv points here.
+# User actually created it at photography/pics/queue/, not photography/queue/ -
+# matching both so it's covered wherever it ends up.
 photography/queue/
+photography/pics/queue/
