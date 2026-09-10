@@ -198,6 +198,23 @@
     margin-bottom: 3rem;
 }
 
+/* Countdown */
+.countdown-section {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.countdown-text {
+    display: inline-block;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.95rem;
+    color: var(--white-foam);
+    background: rgba(212, 165, 116, 0.12);
+    border: 1px solid rgba(212, 165, 116, 0.4);
+    border-radius: 20px;
+    padding: 0.6rem 1.4rem;
+}
+
 /* Back Section */
 .back-section {
     text-align: center;

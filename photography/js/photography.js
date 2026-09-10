@@ -37,6 +37,50 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     }[LANG];
 
+    // ---------- Countdown ----------
+    // Target = 10 days from local midnight, set 2026-09-10 - whenever a real
+    // rotation happens, reset this to (that day's midnight + 10 days). Kept as
+    // a manually-set date, not an auto-looping timer, so it stays an honest
+    // promise rather than a fake-urgency dark pattern.
+    // Shows the date itself (not a ticking clock) plus the day count as a
+    // secondary detail - a calmer, more honest read than a countdown timer.
+    function initCountdown() {
+        const el = document.getElementById('countdownText');
+        if (!el) return;
+        const target = new Date(2026, 8, 20, 0, 0, 0); // 2026-09-20 00:00 local
+
+        const HE_NUM = ['', 'יום', 'יומיים', 'שלושה', 'ארבעה', 'חמישה', 'שישה', 'שבעה', 'שמונה', 'תשעה', 'עשרה'];
+        const EN_NUM = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+
+        function pad(n) { return String(n).padStart(2, '0'); }
+
+        function formatHe(days) {
+            const dateStr = `${pad(target.getDate())}.${pad(target.getMonth() + 1)}.${String(target.getFullYear()).slice(-2)}`;
+            const dayPhrase = days <= 2 ? HE_NUM[days] : `${HE_NUM[days] || days} ימים`;
+            return `ב-${dateStr} בעוד ${dayPhrase}`;
+        }
+        function formatEn(days) {
+            const dateStr = target.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const num = EN_NUM[days] || days;
+            const dayWord = days === 1 ? 'day' : 'days';
+            return `on ${dateStr}, in ${num} ${dayWord}`;
+        }
+
+        function update() {
+            const now = new Date();
+            const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const days = Math.round((target - todayMidnight) / (1000 * 60 * 60 * 24));
+            if (days <= 0) {
+                el.textContent = LANG === 'en' ? 'soon' : 'בקרוב';
+                return;
+            }
+            el.textContent = (LANG === 'en' ? formatEn : formatHe)(days);
+        }
+        update();
+        setInterval(update, 60 * 60 * 1000); // re-check hourly, in case the page stays open past midnight
+    }
+    initCountdown();
+
     // ---------- Data loading ----------
     fetch('data/photos.json')
         .then(res => res.json())
