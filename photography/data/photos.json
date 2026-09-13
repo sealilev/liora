@@ -133,6 +133,25 @@
     "price3040EUR": 70
   },
   {
+    "name": "השקט שלפני",
+    "nameEn": "The Calm Before",
+    "file": "coast/השקט שלפני.png",
+    "category": "ים יבשה",
+    "categoryEn": "Coast",
+    "priceDigitalPersonal": 70,
+    "priceDigitalCommercial": 600,
+    "price1015": 100,
+    "price1521": 120,
+    "price2030": 160,
+    "price3040": 280,
+    "priceDigitalPersonalEUR": 18,
+    "priceDigitalCommercialEUR": 150,
+    "price1015EUR": 25,
+    "price1521EUR": 30,
+    "price2030EUR": 40,
+    "price3040EUR": 70
+  },
+  {
     "name": "השתקפות",
     "nameEn": "Reflection",
     "file": "coast/השתקפות.png",
