@@ -189,6 +189,16 @@ body {
     animation: fadeIn 1s ease-out 0.9s both;
 }
 
+/* A lone leftover button (odd total count) centers itself on its own row
+   instead of hugging one side. Self-adjusting for any number of buttons -
+   :nth-child(odd):last-child only ever matches that leftover, never a
+   normal paired button. */
+.buttons-section a:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    justify-self: center;
+}
+
 .main-btn {
     padding: 1.5rem 3rem;
     background: transparent;
@@ -298,7 +308,12 @@ body {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
+    .buttons-section a:nth-child(odd):last-child {
+        grid-column: 1;
+        max-width: 100%;
+    }
+
     .main-btn {
         padding: 1.2rem 2rem;
         font-size: 1.1rem;
