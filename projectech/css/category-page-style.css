@@ -1,0 +1,78 @@
+/* Category Page ("תוכנות לאנשי ונשות ים" and future category pages) -
+   a single page listing every item in one category, with a horizontal
+   table-of-contents at top that jumps to each item's section below. */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.category-toc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 0 1.5rem;
+}
+
+.category-toc a {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1rem;
+    color: var(--shore-sand);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid rgba(156, 199, 217, 0.4);
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.category-toc a:hover {
+    border-color: var(--shore-sand);
+    background: rgba(212, 165, 116, 0.12);
+}
+
+/* Each item's section gets a top divider + its own heading, and enough
+   top margin that the smooth-scroll target doesn't land under a sticky
+   header (there isn't one here, but a little breathing room reads better). */
+.category-item {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    scroll-margin-top: 2rem;
+}
+
+.category-item + .category-item {
+    border-top: 1px solid rgba(156, 199, 217, 0.25);
+    margin-top: 3rem;
+}
+
+.category-item-title {
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 300;
+    color: var(--sea-foam);
+    text-align: center;
+    letter-spacing: 0.03em;
+    margin-bottom: 2.5rem;
+}
+
+.category-item-placeholder {
+    text-align: center;
+    color: var(--white-foam);
+    opacity: 0.7;
+    font-size: 1.1rem;
+    padding-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+    .category-toc {
+        gap: 0.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .category-toc a {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+}
