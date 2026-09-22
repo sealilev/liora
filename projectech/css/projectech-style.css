@@ -46,24 +46,16 @@
     justify-self: center;
 }
 
-/* Category not built yet - shown so the grid reads as "3 areas", not clickable */
+/* Category not built yet - full-strength visually (same as the live cards),
+   just not a link: no hover lift/cursor, so it doesn't fake clickability. */
 .project-card.coming-soon {
     cursor: default;
-    opacity: 0.6;
 }
 
 .project-card.coming-soon:hover {
     transform: none;
     border-color: rgba(156, 199, 217, 0.3);
     box-shadow: none;
-}
-
-.coming-soon-tag {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--shore-sand);
-    opacity: 0.7;
-    margin-top: 0.25rem;
 }
 
 /* Project Card */
@@ -112,6 +104,12 @@
     padding: 1rem;
     text-align: center;
     margin: 0;
+    /* Always one line, so every card's text block stays the same height -
+       a long title truncates with "…" instead of wrapping and stretching
+       the whole row (grid items stretch to match the tallest sibling). */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* CTA Section */
