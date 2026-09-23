@@ -6,6 +6,17 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Boat-maintenance screenshots are wide desktop dashboard views, not the
+   roughly-square shots the shared .project-row-image style expects - cover+
+   1:1 was cropping off the sides. Show the whole image instead, letterboxed
+   on a white ground to match the app's own white UI background. Scoped to
+   this section only, so it doesn't change the route-planner/aromatherapy
+   images that already look right with the default crop. */
+#boat-maintenance .project-row-image img {
+    object-fit: contain;
+    background: #fff;
+}
+
 .category-toc {
     display: flex;
     flex-wrap: wrap;
