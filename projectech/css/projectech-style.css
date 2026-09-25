@@ -30,20 +30,14 @@
 
 /* Projects Grid */
 .projects-grid {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto 4rem;
     padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-}
-
-/* A lone leftover card (odd total count) centers itself instead of hugging
-   one side - see the equivalent fix on the homepage buttons for why. */
-.projects-grid a:nth-child(odd):last-child {
-    grid-column: 1 / -1;
-    max-width: 340px;
-    justify-self: center;
+    box-sizing: border-box;
 }
 
 /* Category not built yet - full-strength visually (same as the live cards),
@@ -237,16 +231,12 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    /* Two per row instead of three, so it reads as a grid rather than a strip */
+    /* One per row: with 3 cards, 2-per-row would leave the 3rd stuck alone
+       on one side instead of centered, looking demoted rather than equal. */
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0 1rem;
-    }
-
-    .projects-grid a:nth-child(odd):last-child {
-        grid-column: 1;
-        max-width: 100%;
     }
 
     .project-image {
