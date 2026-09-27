@@ -2,7 +2,7 @@
   {
     "name": "חץ וקשת",
     "nameEn": "Bow and Arrow",
-    "file": "weekly/חץ וקשת.png",
+    "file": "weekly/חץ וקשת.jpg",
     "category": "1",
     "categoryEn": null,
     "priceDigitalPersonal": 70,
@@ -21,7 +21,7 @@
   {
     "name": "שבלול",
     "nameEn": "Snail",
-    "file": "weekly/שבלול.png",
+    "file": "weekly/שבלול.jpg",
     "category": "2",
     "categoryEn": null,
     "priceDigitalPersonal": 55,
@@ -40,7 +40,7 @@
   {
     "name": "טיפת שקיעה",
     "nameEn": "Sunset Drop",
-    "file": "weekly/טיפת שקיעה.png",
+    "file": "weekly/טיפת שקיעה.jpg",
     "category": "3",
     "categoryEn": null,
     "priceDigitalPersonal": 60,
@@ -59,7 +59,7 @@
   {
     "name": "סלסול",
     "nameEn": "Curl",
-    "file": "weekly/סלסול.png",
+    "file": "weekly/סלסול.jpg",
     "category": "4",
     "categoryEn": null,
     "priceDigitalPersonal": 65,
@@ -78,7 +78,7 @@
   {
     "name": "רגעים",
     "nameEn": "Moments",
-    "file": "weekly/רגעים.png",
+    "file": "weekly/רגעים.jpg",
     "category": "5",
     "categoryEn": null,
     "priceDigitalPersonal": 70,
@@ -97,7 +97,7 @@
   {
     "name": "השתקפות בחלון",
     "nameEn": "Window Reflection",
-    "file": "sea/השתקפות בחלון.png",
+    "file": "sea/השתקפות בחלון.jpg",
     "category": "עולם הים",
     "categoryEn": "Sea",
     "priceDigitalPersonal": 60,
@@ -116,7 +116,7 @@
   {
     "name": "סופה",
     "nameEn": "Storm",
-    "file": "coast/סופה.png",
+    "file": "coast/סופה.jpg",
     "category": "ים יבשה",
     "categoryEn": "Coast",
     "priceDigitalPersonal": 70,
@@ -154,7 +154,7 @@
   {
     "name": "השתקפות",
     "nameEn": "Reflection",
-    "file": "coast/השתקפות.png",
+    "file": "coast/השתקפות.jpg",
     "category": "ים יבשה",
     "categoryEn": "Coast",
     "priceDigitalPersonal": 60,
@@ -173,7 +173,7 @@
   {
     "name": "המראה",
     "nameEn": "Takeoff",
-    "file": "coast/המראה.png",
+    "file": "coast/המראה.jpg",
     "category": "ים יבשה",
     "categoryEn": "Coast",
     "priceDigitalPersonal": 65,
@@ -192,7 +192,7 @@
   {
     "name": "תפילה",
     "nameEn": "Prayer",
-    "file": "coast/תפילה.png",
+    "file": "coast/תפילה.jpg",
     "category": "ים יבשה",
     "categoryEn": "Coast",
     "priceDigitalPersonal": 60,
@@ -211,7 +211,7 @@
   {
     "name": "ענן מרווה",
     "nameEn": "Sage Cloud",
-    "file": "animals/ענן מרווה.png",
+    "file": "animals/ענן מרווה.jpg",
     "category": "עולם החי",
     "categoryEn": "Animals",
     "priceDigitalPersonal": 55,
@@ -230,7 +230,7 @@
   {
     "name": "נקודת מבט",
     "nameEn": "Viewpoint",
-    "file": "animals/נקודת מבט.png",
+    "file": "animals/נקודת מבט.jpg",
     "category": "עולם החי",
     "categoryEn": "Animals",
     "priceDigitalPersonal": 60,
@@ -249,7 +249,7 @@
   {
     "name": "נדנד",
     "nameEn": "Swing",
-    "file": "animals/נדנד.png",
+    "file": "animals/נדנד.jpg",
     "category": "עולם החי",
     "categoryEn": "Animals",
     "priceDigitalPersonal": 55,
@@ -268,7 +268,7 @@
   {
     "name": "אנפות",
     "nameEn": "Herons",
-    "file": "animals/אנפות.png",
+    "file": "animals/אנפות.jpg",
     "category": "עולם החי",
     "categoryEn": "Animals",
     "priceDigitalPersonal": 60,
@@ -287,7 +287,7 @@
   {
     "name": "צב מים",
     "nameEn": "Water Turtle",
-    "file": "animals/צב מים.png",
+    "file": "animals/צב מים.jpg",
     "category": "עולם החי",
     "categoryEn": "Animals",
     "priceDigitalPersonal": 55,
@@ -306,7 +306,7 @@
   {
     "name": "נרות היין",
     "nameEn": "Wine Candles",
-    "file": "taste/נרות היין.png",
+    "file": "taste/נרות היין.jpg",
     "category": "עולם הטעם",
     "categoryEn": "Taste",
     "priceDigitalPersonal": 50,
@@ -325,7 +325,7 @@
   {
     "name": "לחיים",
     "nameEn": "Cheers",
-    "file": "taste/לחיים.png",
+    "file": "taste/לחיים.jpg",
     "category": "עולם הטעם",
     "categoryEn": "Taste",
     "priceDigitalPersonal": 60,
@@ -344,7 +344,7 @@
   {
     "name": "מזיגה",
     "nameEn": "Pouring",
-    "file": "taste/מזיגה.png",
+    "file": "taste/מזיגה.jpg",
     "category": "עולם הטעם",
     "categoryEn": "Taste",
     "priceDigitalPersonal": 55,
@@ -363,7 +363,7 @@
   {
     "name": "לב",
     "nameEn": "Heart",
-    "file": "taste/לב.png",
+    "file": "taste/לב.jpg",
     "category": "עולם הטעם",
     "categoryEn": "Taste",
     "priceDigitalPersonal": 60,
@@ -382,7 +382,7 @@
   {
     "name": "שילוב",
     "nameEn": "Blend",
-    "file": "taste/שילוב.png",
+    "file": "taste/שילוב.jpg",
     "category": "עולם הטעם",
     "categoryEn": "Taste",
     "priceDigitalPersonal": 55,
@@ -401,7 +401,7 @@
   {
     "name": "זקוף",
     "nameEn": "Upright",
-    "file": "land/זקוף.png",
+    "file": "land/זקוף.jpg",
     "category": "עולם היבשה",
     "categoryEn": "Land",
     "priceDigitalPersonal": 50,
@@ -420,7 +420,7 @@
   {
     "name": "ריחוף",
     "nameEn": "Hovering",
-    "file": "land/ריחוף.png",
+    "file": "land/ריחוף.jpg",
     "category": "עולם היבשה",
     "categoryEn": "Land",
     "priceDigitalPersonal": 55,
@@ -439,7 +439,7 @@
   {
     "name": "טחנות הרוח",
     "nameEn": "Windmills",
-    "file": "land/טחנות הרוח.png",
+    "file": "land/טחנות הרוח.jpg",
     "category": "עולם היבשה",
     "categoryEn": "Land",
     "priceDigitalPersonal": 60,
@@ -458,7 +458,7 @@
   {
     "name": "אור וצל",
     "nameEn": "Light and Shadow",
-    "file": "land/אור וצל.png",
+    "file": "land/אור וצל.jpg",
     "category": "עולם היבשה",
     "categoryEn": "Land",
     "priceDigitalPersonal": 70,
@@ -477,7 +477,7 @@
   {
     "name": "צעדים",
     "nameEn": "Steps",
-    "file": "land/צעדים.png",
+    "file": "land/צעדים.jpg",
     "category": "עולם היבשה",
     "categoryEn": "Land",
     "priceDigitalPersonal": 50,
@@ -496,7 +496,7 @@
   {
     "name": "סדק האור",
     "nameEn": "Crack of Light",
-    "file": "sea/סדק האור.png",
+    "file": "sea/סדק האור.jpg",
     "category": "עולם הים",
     "categoryEn": "Sea",
     "priceDigitalPersonal": 55,
@@ -515,7 +515,7 @@
   {
     "name": "זריחה",
     "nameEn": "Sunrise",
-    "file": "sea/זריחה.png",
+    "file": "sea/זריחה.jpg",
     "category": "עולם הים",
     "categoryEn": "Sea",
     "priceDigitalPersonal": 55,
@@ -534,7 +534,7 @@
   {
     "name": "מיני טורנדו",
     "nameEn": "Mini Tornado",
-    "file": "sea/מיני טורנדו.png",
+    "file": "sea/מיני טורנדו.jpg",
     "category": "עולם הים",
     "categoryEn": "Sea",
     "priceDigitalPersonal": 60,
@@ -553,7 +553,7 @@
   {
     "name": "שביל הזהב",
     "nameEn": "Golden Path",
-    "file": "sea/שביל הזהב.png",
+    "file": "sea/שביל הזהב.jpg",
     "category": "עולם הים",
     "categoryEn": "Sea",
     "priceDigitalPersonal": 55,
