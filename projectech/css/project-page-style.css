@@ -177,16 +177,16 @@
 
 .image-pair-item .project-row-image img {
     aspect-ratio: auto;
-    object-fit: contain;
-    background: #fff;
-    max-height: 500px;
+    height: 420px;
+    object-fit: cover;
+    object-position: top;
 }
 
 .image-pair-item figcaption {
     font-family: 'Heebo', sans-serif;
     font-size: 1rem;
     color: var(--shore-sand);
-    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 
 /* Video Container */
