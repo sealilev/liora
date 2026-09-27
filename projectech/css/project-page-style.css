@@ -154,6 +154,41 @@
     opacity: 0.85;
 }
 
+/* Image Pair (two screenshots side by side, each with its own caption -
+   e.g. personal-apps.html's closing pair). Natural aspect ratio, not the
+   forced 1:1 crop above, since these aren't necessarily square shots. */
+.image-pair {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.image-pair-item {
+    flex: 1 1 260px;
+    max-width: 340px;
+    margin: 0;
+    text-align: center;
+}
+
+.image-pair-item .project-row-image {
+    flex: none;
+}
+
+.image-pair-item .project-row-image img {
+    aspect-ratio: auto;
+    object-fit: contain;
+    background: #fff;
+    max-height: 500px;
+}
+
+.image-pair-item figcaption {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1rem;
+    color: var(--shore-sand);
+    margin-top: 0.75rem;
+}
+
 /* Video Container */
 .video-container {
     position: relative;
