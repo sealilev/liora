@@ -25,6 +25,32 @@
   </url>
   <url>
     <loc>https://sealilev.github.io/liora/projectech/route-planner.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://sealilev.github.io/liora/projectech/route-planner.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sealilev.github.io/liora/projectech/route-planner-en.html" />
+  </url>
+  <url>
+    <loc>https://sealilev.github.io/liora/projectech/route-planner-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://sealilev.github.io/liora/projectech/route-planner.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sealilev.github.io/liora/projectech/route-planner-en.html" />
+  </url>
+  <url>
+    <loc>https://sealilev.github.io/liora/projectech/aromatherapy.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://sealilev.github.io/liora/projectech/aromatherapy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sealilev.github.io/liora/projectech/aromatherapy-en.html" />
+  </url>
+  <url>
+    <loc>https://sealilev.github.io/liora/projectech/aromatherapy-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://sealilev.github.io/liora/projectech/aromatherapy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sealilev.github.io/liora/projectech/aromatherapy-en.html" />
+  </url>
+  <url>
+    <loc>https://sealilev.github.io/liora/projectech/sailors.html</loc>
+  </url>
+  <url>
+    <loc>https://sealilev.github.io/liora/projectech/websites.html</loc>
+  </url>
+  <url>
+    <loc>https://sealilev.github.io/liora/projectech/personal-apps.html</loc>
   </url>
 
   <url>
