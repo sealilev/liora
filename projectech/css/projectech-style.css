@@ -118,6 +118,15 @@
     margin-bottom: 1.5rem;
 }
 
+.cta-subtext {
+    font-size: 1.1rem;
+    color: var(--white-foam);
+    opacity: 0.85;
+    max-width: 640px;
+    margin: -0.5rem auto 1.5rem;
+    line-height: 1.7;
+}
+
 /* Back Section */
 .back-section {
     text-align: center;
