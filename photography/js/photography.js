@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const T = {
         he: {
             buy: 'רכישה',
+            zoomHint: 'לחצ/י להגדלה',
             slideAlt: n => `תמונה ${n}`,
             chooseLicense: 'נא לבחור האם התמונה היא לשימוש אישי או מסחרי',
             printBySize: 'לתיאום',
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         en: {
             buy: 'Buy',
+            zoomHint: 'Click to enlarge',
             slideAlt: n => `Photo ${n}`,
             chooseLicense: 'Please choose whether the photo is for personal or commercial use',
             printBySize: 'to be arranged',
@@ -111,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const p2030 = LANG === 'en' ? photo.price2030EUR : photo.price2030;
         const p3040 = LANG === 'en' ? photo.price3040EUR : photo.price3040;
         return `
-            <img src="${src}" alt="${displayName}" data-name="${displayName}"
+            <img src="${src}" alt="${displayName}" title="${T.zoomHint}" data-name="${displayName}"
                  data-price-personal="${personal}" data-price-commercial="${commercial}"
                  data-price1015="${p1015}" data-price1521="${p1521}"
                  data-price2030="${p2030}" data-price3040="${p3040}">
