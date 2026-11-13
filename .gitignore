@@ -24,3 +24,7 @@ photography/*.docx
 photography/queue/
 photography/pics/queue/
 CLAUDE.md
+
+# Raw testimonial screenshots (names, profile photos, phone numbers) - private.
+# Only the processed copies in projectech/pics/testimonials/ are public.
+projectech/testimonials-raw/
